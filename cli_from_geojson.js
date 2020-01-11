@@ -10,49 +10,49 @@ import * as martinez from "../index";
 function main() {
   var args = process.argv.slice(2)
 
-  if (args.length != 2) {
+  if (args.length < 2) {
     console.log(process.argv);
     console.log("ERROR: Wrong number of arguments.")
   } else {
-    var geojson_in = args[0];
-    var mode = args[1];
+    let geojson_in = args[0];
+    let modes = args.slice(1);
 
-    let data = JSON.parse(fs.readFileSync(filename_in));
-    console.log(data);
+    let data = JSON.parse(fs.readFileSync(geojson_in));
 
-    const subject = load.sync(path.join(__dirname, 'featureTypes', ts.subjectPoly + '.geojson'));
+    //const subject = load.sync(path.join(__dirname, 'featureTypes', ts.subjectPoly + '.geojson'));
+    let p1_geometry = data.features[0].geometry;
+    let p2_geometry = data.features[1].geometry;
 
-    const expectedIntResult = load.sync(path.join(outDir, 'intersection', t.name + '.geojson'))
-    if (expectedIntResult.geometry.type === 'Polygon') expectedIntResult.geometry.coordinates = [expectedIntResult.geometry.coordinates]
-    const intResult = martinez.intersection(subject.geometry.coordinates, clipping.geometry.coordinates);
-    t.same(intResult, expectedIntResult.geometry.coordinates, ts.testName + ' - Intersect');
+    let p1 = p1_geometry.type === "Polygon" ? [p1_geometry.coordinates] : p1.geometry.coordinates;
+    let p2 = p2_geometry.type === "Polygon" ? [p2_geometry.coordinates] : p2.geometry.coordinates;
 
+    for (let mode of modes) {
 
+      var op;
+      switch (mode) {
+        case "union":
+          op = martinez.union; break;
+        case "intersection":
+          op = martinez.intersection; break;
+        case "diff":
+          op = martinez.diff; break;
+        case "xor":
+          op = martinez.xor; break;
+      }
+      if (op == null) {
+        throw `Invalid mode: ${mode}`;
+      }
 
-    let polygons = convert_input(data);
-    console.log(JSON.stringify(polygons));
+      const result = op(p1, p2);
 
-    var union = polygons[0];
-    for (var i = 1; i < polygons.length; i++) {
-      union = PolyBool.union(union, polygons[i]);
-      console.log(JSON.stringify(union));
+      const fn_i = `output/tmp_w8r_input.json`;
+      const fn_o = `output/tmp_w8r_output.json`;
+      converter.store_polygons(p1.concat(p2), fn_i);
+      converter.store_polygons(result, fn_o);
+
+      exec(`plot_polygons.py ${fn_i} ${fn_o}`, function callback(error, stdout, stderr){});
     }
 
-    /*
-    var segments = PolyBool.segments(polygons[0]);
-    for (var i = 1; i < polygons.length; i++){
-      var seg2 = PolyBool.segments(polygons[i]);
-      var comb = PolyBool.combine(segments, seg2);
-      segments = PolyBool.selectUnion(comb);
-    }
-    var union = PolyBool.polygon(segments);
-    */
-
-    console.log(JSON.stringify(union));
-
-    let output_converted = convert_output(union);
-    console.log(JSON.stringify(output_converted));
-    fs.writeFileSync(filename_out, JSON.stringify(output_converted));
   }
 
 
