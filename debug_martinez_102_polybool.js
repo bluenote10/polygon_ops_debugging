@@ -18,9 +18,9 @@ let polygon2 = {
   ],"inverted":false
 }
 
-converter.store_polygons([polygon1, polygon2], `bug_${bug_id}_input.json`);
+converter.store_polygons([polygon1, polygon2], `output/bug_${bug_id}_input.json`);
 
 var union = PolyBool.intersect(polygon1, polygon2);
 console.log(JSON.stringify(union));
 
-converter.store_polygons([union], `bug_${bug_id}_output.json`);
+converter.store_polygons([union], `output/bug_${bug_id}_output.json`);

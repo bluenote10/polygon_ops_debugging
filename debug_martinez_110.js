@@ -22,8 +22,8 @@ let union = martinez.union(p1, p2);
 
 console.log("raw output:", JSON.stringify(union));
 
-const fn_i = `bug_${bug_id}_w8r_input.json`;
-const fn_o = `bug_${bug_id}_w8r_output.json`;
+const fn_i = `output/bug_${bug_id}_w8r_input.json`;
+const fn_o = `output/bug_${bug_id}_w8r_output.json`;
 converter.store_polygons([p1, p2], fn_i);
 converter.store_polygons(union, fn_o);
 
