@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// Test martinez bug https://github.com/w8r/martinez/issues/110 with Polybooljs
+// Test martinez bug https://github.com/w8r/martinez/issues/102 with Polybooljs
 
-const converter = require("./converter");
+const converter = require("./converter_polybool");
 
 var bug_id = 102;
 
