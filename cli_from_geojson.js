@@ -36,6 +36,8 @@ function main() {
           op = martinez.intersection; break;
         case "diff":
           op = martinez.diff; break;
+        case "diff_ba":
+          op = (a, b) => martinez.diff(b, a); break;
         case "xor":
           op = martinez.xor; break;
       }
