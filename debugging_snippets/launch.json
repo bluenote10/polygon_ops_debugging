@@ -1,0 +1,68 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'geo-booleanop'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--lib",
+          "--package=geo-booleanop"
+        ],
+        "filter": {
+          "name": "geo-booleanop",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}/lib"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'geo-booleanop-tests'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--lib",
+          "--package=geo-booleanop-tests",
+        ],
+        "filter": {
+          "name": "geo-booleanop-tests",
+          "kind": "lib"
+        }
+      },
+      "args": ["--nocapture"],
+      "cwd": "${workspaceFolder}/tests"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug single case",
+      "cargo": {
+        "args": [
+          "build",
+          "--package=geo-booleanop-tests"
+        ]
+      },
+      "args": ["fixtures/generic_test_cases/issue69.geojson"],
+      "cwd": "${workspaceFolder}/tests"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug single case (no cargo)",
+      "program": "${workspaceRoot}/target/debug/run_single_test",
+      "args": ["fixtures/generic_test_cases/issue69.geojson"],
+      "cwd": "${workspaceRoot}/tests",
+      "sourceLanguages": ["rust"]
+    }
+  ]
+}
