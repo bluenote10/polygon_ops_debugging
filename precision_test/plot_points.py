@@ -2,7 +2,6 @@
 
 from __future__ import print_function
 
-import numpy as np
 import matplotlib.pyplot as plt
 import json
 import sys
@@ -25,14 +24,6 @@ def plot(ax, data, predicate, color):
     ax.plot(xs, ys, "o", color=color, ms=10)
 
 
-def map_value(x):
-    if x < 0:
-        return -1
-    elif x > 0:
-        return +1
-    else:
-        return 0
-
 def main():
 
     data = json.load(open("data.json"))
@@ -40,34 +31,6 @@ def main():
     fig, ax = plt.subplots(1, 1, figsize=(12, 8))
     plt.subplots_adjust(bottom=0.15, top=0.95, left=0.15, right=0.90)
 
-    size_x = max([row["i"] for row in data]) + 1
-    size_y = max([row["j"] for row in data]) + 1
-
-    img = np.array([map_value(row["o"]) for row in data]).reshape((size_y, size_x), order="F")
-
-    ax.imshow(img, aspect='auto', origin='lower', cmap='jet')
-
-    # Major ticks
-    ax.set_xticks(np.arange(0, size_x, 1));
-    ax.set_yticks(np.arange(0, size_y, 1));
-
-    # Labels for major ticks
-    ax.set_xticklabels([""] * size_x) # np.arange(0, size_x, 1));
-    ax.set_yticklabels([""] * size_y) # np.arange(0, size_y, 1));
-
-    # Minor ticks
-    ax.set_xticks(np.arange(-.5, size_x, 1), minor=True);
-    ax.set_yticks(np.arange(-.5, size_y, 1), minor=True);
-
-    # Gridlines based on minor ticks
-    ax.grid(which='minor', color='k', linestyle='-', linewidth=1)
-
-    fig.tight_layout()
-    plt.show()
-
-
-
-    """
     plot(ax, data, lambda x: x < 0, "g")
     plot(ax, data, lambda x: x > 0, "r")
     plot(ax, data, lambda x: x == 0, "b")
@@ -91,6 +54,5 @@ def main():
     #ax.tick_params(axis='x', rotation=-20)
 
     plt.show()
-    """
 
 main()
