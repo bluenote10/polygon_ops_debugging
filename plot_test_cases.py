@@ -5,9 +5,9 @@ from __future__ import print_function
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
+import argparse
 import json
 import os
-import sys
 
 
 def extract_multi_polygon(feature):
@@ -28,58 +28,69 @@ def plot(ax, multi_polygon, label):
             ax.plot(xs, ys, "o-", label="{} (poly = {}, ring = {})".format(label, j + 1, k + 1), ms=2)
 
 
-def main(interactive=False):
-    if len(sys.argv) < 2:
-        print("ERROR: No geojson files specified.")
-        sys.exit(1)
+def parse_args():
+    parser = argparse.ArgumentParser("Tool to plot test cases")
+    parser.add_argument(
+        "-i", "--interactive",
+        action="store_true",
+        help="Show interactive plot windows."
+    )
+    parser.add_argument(
+        "files",
+        nargs="+",
+        help="GeoJSON files to plot",
+    )
+    args = parser.parse_args()
+    return args
 
-    else:
-        files = sys.argv[1:]
 
-        with PdfPages("test_cases.pdf") as pp:
+def main():
+    args = parse_args()
+    files = args.files
+    interactive = args.interactive
 
-            for f in sorted(files):
-                data = json.load(open(f))
-                assert data["type"] == "FeatureCollection"
+    with PdfPages("test_cases.pdf") as pp:
 
-                features = data["features"]
-                assert len(features) >= 2
+        for f in sorted(files):
+            print("Plotting test case: {}".format(f))
+            data = json.load(open(f))
+            assert data["type"] == "FeatureCollection"
 
-                p1 = extract_multi_polygon(features[0])
-                p2 = extract_multi_polygon(features[1])
+            features = data["features"]
+            assert len(features) >= 2
 
-                for feature in features[2:]:
-                    op = feature["properties"]["operation"]
-                    p_res = extract_multi_polygon(feature)
+            p1 = extract_multi_polygon(features[0])
+            p2 = extract_multi_polygon(features[1])
 
-                    fig, axes = plt.subplots(1, 3, figsize=(18, 10), sharex=True, sharey=True)
+            for feature in features[2:]:
+                op = feature["properties"]["operation"]
+                p_res = extract_multi_polygon(feature)
 
-                    plot(axes[0], p1, "A")
-                    plot(axes[0], p2, "B")
+                fig, axes = plt.subplots(1, 3, figsize=(18, 10), sharex=True, sharey=True)
 
-                    plot(axes[1], p_res, "Result")
+                plot(axes[0], p1, "A")
+                plot(axes[0], p2, "B")
 
-                    plot(axes[2], p1, "A")
-                    plot(axes[2], p2, "B")
-                    plot(axes[2], p_res, "Result")
+                plot(axes[1], p_res, "Result")
 
-                    #filename_out = filename.replace(".json", ".png")
-                    #plt.savefig(filename_out)
+                plot(axes[2], p1, "A")
+                plot(axes[2], p2, "B")
+                plot(axes[2], p_res, "Result")
 
-                    axes[0].legend(loc="best")
-                    axes[1].legend(loc="best")
-                    axes[2].legend(loc="best")
+                axes[0].legend(loc="best")
+                axes[1].legend(loc="best")
+                axes[2].legend(loc="best")
 
-                    fig.suptitle("{} / {}".format(os.path.basename(f), op))
+                fig.suptitle("{} / {}".format(os.path.basename(f), op))
 
-                    plt.tight_layout()
-                    plt.subplots_adjust(top=0.93)
+                plt.tight_layout()
+                plt.subplots_adjust(top=0.93)
 
-                    if interactive:
-                        plt.show()
+                if interactive:
+                    plt.show()
 
-                    pp.savefig(fig)
-                    plt.close(fig)
+                pp.savefig(fig)
+                plt.close(fig)
 
 
 if __name__ == "__main__":
