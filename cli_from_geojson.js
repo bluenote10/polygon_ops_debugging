@@ -87,8 +87,9 @@ function main() {
 
     let resultTestCaseFile = runTestCase(testCaseFile);
 
-    exec(`plot_test_cases.py -i ${resultTestCaseFile}`, function callback(error, stdout, stderr){});
-
+    let cmd = `plot_test_cases.py -i ${resultTestCaseFile}`;
+    console.log("Running: " + cmd);
+    exec(cmd, function callback(error, stdout, stderr){});
   }
 }
 
@@ -138,7 +139,9 @@ function main_old() {
       converter.store_polygons(p1.concat(p2), fn_i);
       converter.store_polygons(result, fn_o);
 
-      exec(`plot_polygons.py ${fn_i} ${fn_o}`, function callback(error, stdout, stderr){});
+      let cmd = `plot_polygons.py ${fn_i} ${fn_o}`;
+      console.log("Running: " + cmd);
+      exec(cmd, function callback(error, stdout, stderr){});
     }
 
   }
