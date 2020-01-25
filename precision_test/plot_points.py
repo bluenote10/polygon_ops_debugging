@@ -25,8 +25,12 @@ def plot(ax, data, predicate, color):
 
 
 def main():
+    if len(sys.argv) != 2:
+        print("Wrong number of arguments")
+        sys.exit(1)
 
-    data = json.load(open("data.json"))
+    filename = sys.argv[1]
+    data = json.load(open(filename))
 
     fig, ax = plt.subplots(1, 1, figsize=(12, 8))
     plt.subplots_adjust(bottom=0.15, top=0.95, left=0.15, right=0.90)
