@@ -89,7 +89,9 @@ function main() {
 
     let cmd = `plot_test_cases.py -i ${resultTestCaseFile}`;
     console.log("Running: " + cmd);
-    exec(cmd, function callback(error, stdout, stderr){});
+    //exec(cmd, function callback(error, stdout, stderr){});
+    var spawn = require('child_process').spawn;
+    spawn('plot_test_cases.py', ['-i', resultTestCaseFile], { stdio: 'inherit' });
   }
 }
 

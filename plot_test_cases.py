@@ -27,6 +27,9 @@ def check_winding_order_clockwise(points):
     Implements winding order check as per: https://stackoverflow.com/a/1180256/1804173
     """
     points = points[:-1] # no need for repeated endpoints
+    if len(points) == 0:
+        return True
+
     min_y = None
     min_x = None
     min_i = None
@@ -36,6 +39,8 @@ def check_winding_order_clockwise(points):
             min_y = p[1]
             min_i = i
 
+    if min_x is None:
+        import IPython; IPython.embed()
     a = min_i
     b = a - 1
     c = a + 1
@@ -135,9 +140,12 @@ def main():
                 plot(axes[2], p2, "B")
                 plot(axes[2], p_res, "Result")
 
-                axes[0].legend(loc="best", prop={"size": 9})
-                axes[1].legend(loc="best", prop={"size": 9})
-                axes[2].legend(loc="best", prop={"size": 9})
+                if len(axes[0].get_legend_handles_labels()[0]) < 10:
+                    axes[0].legend(loc="best", prop={"size": 9})
+                if len(axes[1].get_legend_handles_labels()[0]) < 10:
+                    axes[1].legend(loc="best", prop={"size": 9})
+                if len(axes[2].get_legend_handles_labels()[0]) < 10:
+                    axes[2].legend(loc="best", prop={"size": 9})
 
                 fig.suptitle("{} / {}".format(os.path.basename(f), op))
                 if "comment" in feature["properties"] and feature["properties"]["comment"] is not None:
