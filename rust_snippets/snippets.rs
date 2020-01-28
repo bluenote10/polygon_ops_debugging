@@ -8,3 +8,7 @@ let output_geojson = GeoJson::FeatureCollection(FeatureCollection {
 });
 let f = File::create(filename).expect("Unable to create json file.");
 serde_json::to_writer_pretty(f, &output_geojson).expect("Unable to write json file.");
+
+
+
+// Old implementation of next-pos-loop
