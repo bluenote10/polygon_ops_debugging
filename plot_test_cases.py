@@ -13,6 +13,10 @@ import os
 
 
 def extract_multi_polygon(feature):
+    """
+    Extracts the coordinates of a GeoJSON Feature of either type Polygon or Multipolygon,
+    implicitly converting the coordinates to the form of a Multipolygon.
+    """
     kind = feature["geometry"]["type"]
     if kind == "Polygon":
         return [feature["geometry"]["coordinates"]]
@@ -26,7 +30,7 @@ def check_winding_order_clockwise(points):
     """
     Implements winding order check as per: https://stackoverflow.com/a/1180256/1804173
     """
-    points = points[:-1] # no need for repeated endpoints
+    points = points[:-1]    # no need for repeated endpoints
     if len(points) == 0:
         return True
 
@@ -39,8 +43,6 @@ def check_winding_order_clockwise(points):
             min_y = p[1]
             min_i = i
 
-    if min_x is None:
-        import IPython; IPython.embed()
     a = min_i
     b = a - 1
     c = a + 1
@@ -56,11 +58,25 @@ def check_winding_order_clockwise(points):
 
 
 def fix_winding_order(points, should_be_clockwise):
+    """
+    Ensures a ring is in either clockwise or counter-clockwise order.
+    """
     is_clockwise = check_winding_order_clockwise(points)
     if is_clockwise == should_be_clockwise:
         return points[:]
     else:
         return points[::-1]
+
+
+def validate_ring(ring):
+    assert isinstance(ring, list), "Ring must be of type list, but is {}.".format(type(ring))
+    for p in ring:
+        assert isinstance(p, list), "Points must be of type list, but is {}".format(type(p))
+        assert len(p) == 2, "Points must be list of length 2, but is {}".format(len(p))
+        assert isinstance(p[0], float) or isinstance(p[0], int), \
+            "Values must be float or int, got: {}".format(p[0])
+        assert isinstance(p[1], float) or isinstance(p[1], int), \
+            "Values must be float or int, got: {}".format(p[1])
 
 
 def plot(ax, multi_polygon, label, shade_color=None):
@@ -69,10 +85,9 @@ def plot(ax, multi_polygon, label, shade_color=None):
         path_commands = []
         for k, ring in enumerate(polygon):
             try:
+                validate_ring(ring)
                 xs = [p[0] for p in ring]
                 ys = [p[1] for p in ring]
-                assert isinstance(p[0], float) or isinstance(p[0], int)
-                assert isinstance(p[1], float) or isinstance(p[1], int)
                 ax.plot(xs, ys, "o-", label="{} (poly = {}, ring = {})".format(label, j + 1, k + 1), ms=2)
             except (IndexError, AssertionError) as e:
                 plt.figtext(
@@ -92,16 +107,27 @@ def plot(ax, multi_polygon, label, shade_color=None):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser("Tool to plot test cases")
+    parser = argparse.ArgumentParser("Tool to plot content test case files.")
     parser.add_argument(
         "-i", "--interactive",
         action="store_true",
-        help="Show interactive plot windows."
+        help="whether to show interactive plot windows"
+    )
+    parser.add_argument(
+        "--pngs",
+        action="store_true",
+        help="whether to generate individual PNGs for each plot"
+    )
+    parser.add_argument(
+        "-o", "--output",
+        help="PDF output file name (default: test_cases.pdf)",
+        default="test_cases.pdf",
     )
     parser.add_argument(
         "files",
+        metavar="<TEST-CASE-FILE>",
         nargs="+",
-        help="GeoJSON files to plot",
+        help="test case GeoJSON file(s) to plot",
     )
     args = parser.parse_args()
     return args
@@ -112,7 +138,7 @@ def main():
     files = args.files
     interactive = args.interactive
 
-    with PdfPages("test_cases.pdf") as pp:
+    with PdfPages(args.output) as pp:
 
         for f in sorted(files):
             print("Plotting test case: {}".format(f))
@@ -159,7 +185,7 @@ def main():
                 plt.subplots_adjust(top=0.90)
 
                 pp.savefig(fig)
-                plt.savefig("/tmp/{}_{}.png".format(os.path.basename(f), op))
+                plt.savefig("{}_{}.png".format(f, op))
 
                 if interactive:
                     plt.show()
