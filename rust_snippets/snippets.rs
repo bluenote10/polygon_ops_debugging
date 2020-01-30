@@ -128,3 +128,56 @@ if let Some(prev_in_result) = result_events[i as usize].get_prev_in_result() {
         println!("Keeping contour as external");
     }
 }
+
+
+//-----------------------------------------------------------------------------
+// connect_edges debugging
+//-----------------------------------------------------------------------------
+
+// at the end of `order_events`
+for r in &result_events {
+    println!("{:?}", r);
+    debug_assert!(r.get_other_event().is_some());
+}
+
+for (i, r) in result_events.iter().enumerate() {
+    println!("pos {:3} linked to {:3}    {}    {:?} => {:?}",
+        i,
+        r.get_other_pos(),
+        if r.is_left() { "L" } else { "R" },
+        r.point,
+        r.get_other_event().map(|o| o.point).unwrap(),
+    );
+}
+
+// csv generator
+use std::fs::File;
+use std::io::Write;
+fn debug_print_results<F>(events: &[Rc<SweepEvent<F>>])
+where
+    F: Float,
+{
+    let mut writer = File::create("debug.csv").unwrap();
+    writeln!(&mut writer,
+        "index;x;y;other_x;other_y;lr;result_transition;in_out;other_in_out;is_subject;is_exterior_ring;prev_in_result"
+    ).expect("Failed to write to file");
+    for (i, evt) in events.iter().enumerate() {
+        writeln!(&mut writer, "{i};{x:?};{y:?};{other_x:?};{other_y:?};{lr};{transition:?};{in_out};{other_in_out};{subject};{exterior_ring};{prev_in_result:?}",
+            i=i,
+            x=evt.point.x,
+            y=evt.point.y,
+            other_x=evt.get_other_event().unwrap().point.x,
+            other_y=evt.get_other_event().unwrap().point.y,
+            lr=if evt.is_left() { "L" } else { "R" },
+            transition=evt.get_result_transition(),
+            in_out=evt.is_in_out(),
+            other_in_out=evt.is_other_in_out(),
+            subject=evt.is_subject,
+            exterior_ring=evt.is_exterior_ring,
+            prev_in_result=evt.get_prev_in_result().map(|o| format!("{:?}", o.point)),
+        ).expect("Failed to write to file");
+    }
+}
+
+// to be called in second line of connect edges
+debug_print_results(&result_events);
