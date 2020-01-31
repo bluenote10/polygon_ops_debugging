@@ -4,7 +4,6 @@ from __future__ import print_function
 
 import json
 import pandas as pd
-import tabloo
 
 import matplotlib.pyplot as plt
 from matplotlib import collections
@@ -71,7 +70,6 @@ def replace_ids(json_lines):
         if not addr in addrs:
             addrs[addr] = id[0]
             id[0] += 1
-        print(addr, id[0], addrs)
         return addrs[addr]
 
     for line in json_lines:
