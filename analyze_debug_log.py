@@ -31,26 +31,6 @@ def parse_args():
     return args
 
 
-def plot_by_column(ax, df, by_column):
-    df = df.loc[df["lr"] == "L", :]
-
-    for kind in df[by_column].unique():
-        sub_df = df.loc[df[by_column] == kind, :]
-        lines = [
-            [(row["x"], row["y"]), (row["other_x"], row["other_y"])]
-            for _, row in sub_df.iterrows()
-        ]
-        color = ax._get_lines.prop_cycler.next()['color']
-        #color = ax._get_lines.get_next_color()
-        lc = collections.LineCollection(lines, color=color, label=kind)
-        ax.add_collection(lc)
-        #ax.plot([], [])
-
-    ax.autoscale()
-    ax.margins(0.1)
-    ax.legend()
-
-
 def read_file(filename):
     json_lines = []
     with open(filename) as f:
@@ -62,21 +42,34 @@ def read_file(filename):
 
 
 def replace_ids(json_lines):
-
     id = [0]
     addrs = {}
 
     def fix(addr):
-        if not addr in addrs:
-            addrs[addr] = id[0]
-            id[0] += 1
-        return addrs[addr]
+        if isinstance(addr, int):
+            return addr
+        else:
+            if not addr in addrs:
+                addrs[addr] = id[0]
+                id[0] += 1
+            return addrs[addr]
 
-    for line in json_lines:
-        process_event = line.get("processEvent")
-        if process_event is not None:
-            for name in ["self", "other"]:
-                process_event[name]["addr"] = fix(process_event[name]["addr"])
+    def replace_ids_rec(data):
+        if isinstance(data, list):
+            for x in data:
+                replace_ids_rec(x)
+        elif isinstance(data, dict):
+            if "addr" in data:
+                data["addr"] = fix(data["addr"])
+            # priorities for recursion
+            if "processEvent" in data:
+                replace_ids_rec(data["processEvent"])
+            if "self" in data:
+                replace_ids_rec(data["self"])
+            for value in data.values():
+                replace_ids_rec(value)
+
+    replace_ids_rec(json_lines)
 
 
 def extract_bounding_box(json_lines):
@@ -97,6 +90,23 @@ def extract_bounding_box(json_lines):
                 if y > max_y or max_y is None:
                     max_y = y
     return min_x, max_x, min_y, max_y
+
+
+def group_by_iteration(json_lines):
+    iterations = []
+    cur_iteration = {}
+    for line in json_lines:
+        process_event = line.get("processEvent")
+        intersection = line.get("intersection")
+        if process_event is not None:
+            if len(cur_iteration) > 0:
+                iterations.append(cur_iteration)
+            cur_iteration = line.copy()
+        elif intersection is not None:
+            cur_iteration.setdefault("intersections", []).append(intersection)
+        else:
+            cur_iteration.update(line)
+    return iterations
 
 
 def plot_sequence(json_lines, bb, basename):
