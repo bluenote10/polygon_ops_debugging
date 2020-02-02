@@ -106,6 +106,8 @@ def group_by_iteration(json_lines):
             cur_iteration.setdefault("intersections", []).append(intersection)
         else:
             cur_iteration.update(line)
+    if len(cur_iteration) > 0:
+        iterations.append(cur_iteration)
     return iterations
 
 
