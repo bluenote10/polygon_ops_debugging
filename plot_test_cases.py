@@ -137,6 +137,7 @@ def main():
     args = parse_args()
     files = args.files
     interactive = args.interactive
+    pngs = args.pngs
 
     with PdfPages(args.output) as pp:
 
@@ -185,8 +186,8 @@ def main():
                 plt.subplots_adjust(top=0.90)
 
                 pp.savefig(fig)
-                plt.savefig("{}_{}.png".format(f, op))
-
+                if pngs:
+                    plt.savefig("{}_{}.png".format(f, op))
                 if interactive:
                     plt.show()
 
