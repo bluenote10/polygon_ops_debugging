@@ -48,6 +48,7 @@ class Modes(object):
     nested_polys = "nested_polys"
     multiple_depth_zero = "multiple_depth_zero"
     vertical_ulp_slopes1 = "vertical_ulp_slopes1"
+    many_rects = "many_rects"
 
 
 def parse_args():
@@ -63,6 +64,41 @@ def parse_args():
     )
     args = parser.parse_args()
     return args
+
+
+class Rect(object):
+    def __init__(self, x_min, y_min, x_max, y_max):
+        self.x_min = x_min
+        self.y_min = y_min
+        self.x_max = x_max
+        self.y_max = y_max
+
+    def overlaps(self, that):
+        return (
+            self.x_min < that.x_max and that.x_min < self.x_max and
+            self.y_min < that.y_max and that.y_min < self.y_max
+        )
+
+    def get_poly_ring(self):
+        return gen_poly(
+            self.x_min,
+            self.y_min,
+            self.x_max,
+            self.y_max,
+        )
+
+
+def swap_xy(polys):
+    return [
+        [
+            [
+                [p[1], p[0]]
+                for p in ring
+            ]
+            for ring in poly
+        ]
+        for poly in polys
+    ]
 
 
 def gen_poly(x_min, y_min, x_max, y_max):
@@ -113,17 +149,21 @@ def gen_rects_ulp_slopes(x_ext=1.0, y_ext=2.0):
     return polys
 
 
-def swap_xy(polys):
-    return [
-        [
-            [
-                [p[1], p[0]]
-                for p in ring
-            ]
-            for ring in poly
-        ]
-        for poly in polys
-    ]
+def gen_many_rects(seed):
+    np.random.seed(seed)
+    rects = []
+    for _ in range(100):
+        x = np.random.uniform(-100, +100)
+        y = np.random.uniform(-100, +100)
+        w = np.random.uniform(20, 50)
+        h = np.random.uniform(20, 50)
+        r = Rect(x - w / 2, y - h / 2, x + w / 2, y + w / 2)
+        if not any([r.overlaps(other) for other in rects]):
+            rects.append(r)
+    polys = []
+    for r in rects:
+        polys.append([r.get_poly_ring()])
+    return polys
 
 
 def main():
@@ -168,6 +208,10 @@ def main():
     elif args.mode == Modes.vertical_ulp_slopes1:
         polys_a = gen_rects_ulp_slopes()
         polys_b = swap_xy(polys_a)
+
+    elif args.mode == Modes.many_rects:
+        polys_a = gen_many_rects(1)
+        polys_b = gen_many_rects(2)
 
     else:
         raise ValueError("Invalid mode: {}".format(args.mode))
