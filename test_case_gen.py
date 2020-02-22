@@ -48,6 +48,7 @@ class Modes(object):
     nested_polys = "nested_polys"
     multiple_depth_zero = "multiple_depth_zero"
     vertical_ulp_slopes1 = "vertical_ulp_slopes1"
+    vertical_ulp_slopes2 = "vertical_ulp_slopes2"
     many_rects = "many_rects"
 
 
@@ -99,6 +100,19 @@ def swap_xy(polys):
         ]
         for poly in polys
     ]
+
+
+def apply_noise_to_dim(poly_ring, dim, delta_min, delta_max):
+    poly_ring = poly_ring[:-1]  # no need to add noise to last (redundant) point
+
+    def apply_noise_to(p):
+        if dim == 0:
+            return [p[0] + np.random.uniform(delta_min, delta_max), p[1]]
+        elif dim == 1:
+            return [p[0], p[1] + np.random.uniform(delta_min, delta_max)]
+
+    new_poly_ring = [apply_noise_to(p) for p in poly_ring]
+    return new_poly_ring + [new_poly_ring[0]]
 
 
 def gen_poly(x_min, y_min, x_max, y_max):
@@ -208,6 +222,19 @@ def main():
     elif args.mode == Modes.vertical_ulp_slopes1:
         polys_a = gen_rects_ulp_slopes()
         polys_b = swap_xy(polys_a)
+
+    elif args.mode == Modes.vertical_ulp_slopes2:
+        np.random.seed(2)
+        polys_a = gen_rects_ulp_slopes()
+        polys_b = swap_xy(polys_a)
+        polys_a = [
+            [apply_noise_to_dim(ring, 1, -0.2, +0.2) for ring in poly]
+            for poly in polys_a
+        ]
+        polys_b = [
+            [apply_noise_to_dim(ring, 0, -0.2, +0.2) for ring in poly]
+            for poly in polys_b
+        ]
 
     elif args.mode == Modes.many_rects:
         polys_a = gen_many_rects(1)
