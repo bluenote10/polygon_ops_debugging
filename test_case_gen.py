@@ -33,7 +33,7 @@ TEMPLATE = """
         "type": "MultiPolygon"
       },
       "properties": {
-        "operation": "union"
+        "operation": "PLACEHOLDER"
       },
       "type": "Feature"
     }
@@ -50,6 +50,8 @@ class Modes(object):
     vertical_ulp_slopes1 = "vertical_ulp_slopes1"
     vertical_ulp_slopes2 = "vertical_ulp_slopes2"
     many_rects = "many_rects"
+    overlapping_segments1 = "overlapping_segments1"
+    overlapping_segments2 = "overlapping_segments2"
 
 
 def parse_args():
@@ -62,6 +64,11 @@ def parse_args():
     parser.add_argument(
         "-o", "--output",
         help="Output JSON file"
+    )
+    parser.add_argument(
+        "--operation",
+        help="Which output operation to request in the test case.",
+        default="union",
     )
     args = parser.parse_args()
     return args
@@ -113,6 +120,10 @@ def apply_noise_to_dim(poly_ring, dim, delta_min, delta_max):
 
     new_poly_ring = [apply_noise_to(p) for p in poly_ring]
     return new_poly_ring + [new_poly_ring[0]]
+
+
+def close_ring(points):
+    return points + [points[0]]
 
 
 def gen_poly(x_min, y_min, x_max, y_max):
@@ -240,6 +251,74 @@ def main():
         polys_a = gen_many_rects(1)
         polys_b = gen_many_rects(2)
 
+    elif args.mode == Modes.overlapping_segments1:
+        polys_a = [
+            [close_ring([
+                [10, +10],
+                [15, +10],
+                [15, +20],
+            ])],
+            [close_ring([
+                [10, -10],
+                [15, -10],
+                [15, -20],
+            ])],
+            [close_ring([
+                [20, +10],
+                [25, +10],
+                [25, +20],
+            ])],
+            [close_ring([
+                [20, -10],
+                [25, -10],
+                [25, -20],
+            ])],
+        ]
+        polys_b = [
+            [close_ring([
+                [10, +10],
+                [15, +10],
+                [15, +15],
+            ])],
+            [close_ring([
+                [10, -10],
+                [15, -10],
+                [15, -15],
+            ])],
+            [close_ring([
+                [20, +10],
+                [25, +10],
+                [25,  +5],
+            ])],
+            [close_ring([
+                [20, -10],
+                [25, -10],
+                [25,  -5],
+            ])],
+        ]
+
+    elif args.mode == Modes.overlapping_segments2:
+        polys_a = [
+            [gen_poly(2*i, -1, 2*i+1, +1)]
+            for i in range(1, 9)
+        ]
+
+        def get_modifier(i):
+            y_factor = +1 if i < 4 else -1
+            if i % 4 == 0:
+                return y_factor, 2*i, 2*i + 1
+            elif i % 4 == 1:
+                return y_factor, 2*i, 2*i + 0.5
+            elif i % 4 == 2:
+                return y_factor, 2*i + 0.5, 2*i + 1
+            elif i % 4 == 3:
+                return y_factor, 2*i + 0.25, 2*i + 0.75
+
+        polys_b = [
+            [gen_poly(x_min, +1 * y_factor, x_max, +2 * y_factor)]
+            for y_factor, x_min, x_max in [get_modifier(i) for i in range(1, 9)]
+        ]
+
     else:
         raise ValueError("Invalid mode: {}".format(args.mode))
 
@@ -247,7 +326,7 @@ def main():
     print("B:\n{}".format(polys_b))
 
     json_output = TEMPLATE.replace("{", "{{").replace("}", "}}").replace("PLACEHOLDER", "{}").format(
-        polys_a, type_a, polys_b, type_b
+        polys_a, type_a, polys_b, type_b, args.operation,
     )
 
     print(json_output)
