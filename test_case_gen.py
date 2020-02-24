@@ -52,6 +52,7 @@ class Modes(object):
     many_rects = "many_rects"
     overlapping_segments1 = "overlapping_segments1"
     overlapping_segments2 = "overlapping_segments2"
+    collinear_segments1 = "collinear_segments1"
 
 
 def parse_args():
@@ -120,6 +121,21 @@ def apply_noise_to_dim(poly_ring, dim, delta_min, delta_max):
 
     new_poly_ring = [apply_noise_to(p) for p in poly_ring]
     return new_poly_ring + [new_poly_ring[0]]
+
+
+def subdivide_ring(poly_ring, num_subdivisions):
+    points = [poly_ring[0]]
+
+    for p_next in poly_ring[1:]:
+        p_prev = points[-1]
+
+        ratios = list(np.linspace(0, 1, num_subdivisions + 1))[1:]
+        for ratio in ratios:
+            x = p_prev[0] + (p_next[0] - p_prev[0]) * ratio
+            y = p_prev[1] + (p_next[1] - p_prev[1]) * ratio
+            points.append([x, y])
+
+    return points
 
 
 def close_ring(points):
@@ -318,6 +334,10 @@ def main():
             [gen_poly(x_min, +1 * y_factor, x_max, +2 * y_factor)]
             for y_factor, x_min, x_max in [get_modifier(i) for i in range(1, 9)]
         ]
+
+    elif args.mode == Modes.collinear_segments1:
+        polys_a = [[subdivide_ring(gen_poly(0, 0, 1, 1), 4)]]
+        polys_b = [[subdivide_ring(gen_poly(0, 0.25, 1, 1.25), 4)]]
 
     else:
         raise ValueError("Invalid mode: {}".format(args.mode))
