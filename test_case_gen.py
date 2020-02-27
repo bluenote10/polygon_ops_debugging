@@ -3,6 +3,7 @@
 from __future__ import print_function, division
 
 import argparse
+import json
 
 import numpy as np
 
@@ -53,6 +54,11 @@ class Modes(object):
     overlapping_segments1 = "overlapping_segments1"
     overlapping_segments2 = "overlapping_segments2"
     collinear_segments1 = "collinear_segments1"
+    rust_issue12 = "rust_issue12"
+
+
+RUST_ISSUE12_A = """[{"exterior":[{"x":0.0,"y":0.0},{"x":128.0,"y":0.0},{"x":128.0,"y":16.0},{"x":16.0,"y":16.0},{"x":16.0,"y":32.0},{"x":32.0,"y":48.0},{"x":32.0,"y":208.0},{"x":48.0,"y":224.0},{"x":64.0,"y":224.0},{"x":64.0,"y":256.0},{"x":80.0,"y":272.0},{"x":0.0,"y":272.0},{"x":0.0,"y":256.0},{"x":0.0,"y":0.0}],"interiors":[]},{"exterior":[{"x":64.0,"y":96.0},{"x":80.0,"y":80.0},{"x":96.0,"y":96.0},{"x":96.0,"y":128.0},{"x":112.0,"y":144.0},{"x":96.0,"y":160.0},{"x":64.0,"y":128.0},{"x":64.0,"y":96.0}],"interiors":[]},{"exterior":[{"x":160.0,"y":176.0},{"x":176.0,"y":160.0},{"x":176.0,"y":144.0},{"x":192.0,"y":128.0},{"x":208.0,"y":128.0},{"x":224.0,"y":144.0},{"x":224.0,"y":160.0},{"x":240.0,"y":176.0},{"x":256.0,"y":176.0},{"x":272.0,"y":192.0},{"x":272.0,"y":208.0},{"x":288.0,"y":208.0},{"x":304.0,"y":192.0},{"x":304.0,"y":144.0},{"x":320.0,"y":128.0},{"x":336.0,"y":128.0},{"x":352.0,"y":144.0},{"x":352.0,"y":176.0},{"x":368.0,"y":192.0},{"x":368.0,"y":224.0},{"x":352.0,"y":240.0},{"x":256.0,"y":240.0},{"x":176.0,"y":240.0},{"x":160.0,"y":224.0},{"x":160.0,"y":176.0}],"interiors":[]},{"exterior":[{"x":192.0,"y":0.0},{"x":256.0,"y":0.0},{"x":480.0,"y":0.0},{"x":480.0,"y":64.0},{"x":464.0,"y":48.0},{"x":416.0,"y":48.0},{"x":400.0,"y":32.0},{"x":416.0,"y":32.0},{"x":400.0,"y":32.0},{"x":336.0,"y":32.0},{"x":320.0,"y":48.0},{"x":304.0,"y":48.0},{"x":304.0,"y":32.0},{"x":288.0,"y":16.0},{"x":256.0,"y":16.0},{"x":192.0,"y":16.0},{"x":192.0,"y":0.0}],"interiors":[]},{"exterior":[{"x":416.0,"y":80.0},{"x":432.0,"y":64.0},{"x":448.0,"y":64.0},{"x":448.0,"y":96.0},{"x":432.0,"y":96.0},{"x":416.0,"y":80.0}],"interiors":[]},{"exterior":[{"x":416.0,"y":256.0},{"x":432.0,"y":240.0},{"x":432.0,"y":224.0},{"x":448.0,"y":208.0},{"x":480.0,"y":208.0},{"x":480.0,"y":256.0},{"x":416.0,"y":256.0}],"interiors":[]}]"""
+RUST_ISSUE12_B = """[{"exterior":[{"x":400.0,"y":272.0},{"x":416.0,"y":256.0},{"x":480.0,"y":256.0},{"x":480.0,"y":272.0},{"x":400.0,"y":272.0}],"interiors":[]}]"""
 
 
 def parse_args():
@@ -207,6 +213,21 @@ def gen_many_rects(seed):
     return polys
 
 
+def convert_from_geo_type_json(string_data):
+    json_data = json.loads(string_data)
+
+    def convert_ring(coords):
+        return [
+            [coord["x"], coord["y"]] for coord in coords
+        ]
+
+    geojson_data = [
+        [convert_ring(poly["exterior"])] + [convert_ring(interior) for interior in poly["interiors"]]
+        for poly in json_data
+    ]
+    return geojson_data
+
+
 def main():
     args = parse_args()
 
@@ -338,6 +359,10 @@ def main():
     elif args.mode == Modes.collinear_segments1:
         polys_a = [[subdivide_ring(gen_poly(0, 0, 1, 1), 4)]]
         polys_b = [[subdivide_ring(gen_poly(0, 0.25, 1, 1.25), 4)]]
+
+    elif args.mode == Modes.rust_issue12:
+        polys_a = convert_from_geo_type_json(RUST_ISSUE12_A)
+        polys_b = convert_from_geo_type_json(RUST_ISSUE12_B)
 
     else:
         raise ValueError("Invalid mode: {}".format(args.mode))
