@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
 from dash.dependencies import Input, Output
 
 import json
@@ -137,11 +138,26 @@ def init_app(iterations_data, bb):
         traces.append(trace_markers([e.from_x], [e.from_y], e.color, process_event["self"]["addr"]))
         traces.append(trace_markers([e.upto_x], [e.upto_y], "#DDDDDD", process_event["other"]["addr"]))
 
+        """
+        if "computeFields" in iteration:
+            df = pd.DataFrame(iteration["computeFields"])
+        else:
+            df = pd.DataFrame()
+        keys, values = zip(*iteration["computeFields"].items())
+        table = dash_table.DataTable(
+            id='table',
+            columns=[{"keys": keys, "values": values}],
+            data=df.to_dict('records'),
+        )
+        """
+        title = "Right event" if iteration.get("computeFields") is None else str(iteration["computeFields"])
+
         offset_x = (bb[1] - bb[0]) * 0.03
         offset_y = (bb[3] - bb[2]) * 0.03
         return {
             'data': traces,
             'layout': dict(
+                title=title,
                 xaxis={'title': 'x', 'range': [bb[0] - offset_x, bb[1] + offset_x]},
                 yaxis={'title': 'y', 'range': [bb[2] - offset_y, bb[3] + offset_y]},
                 margin={'l': 100, 'b': 50, 't': 50, 'r': 300},

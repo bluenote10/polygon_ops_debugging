@@ -37,7 +37,7 @@ def plot_by_column(ax, df, by_column):
         ]
         color = ax._get_lines.prop_cycler.next()['color']
         #color = ax._get_lines.get_next_color()
-        lc = collections.LineCollection(lines, color=color, label=kind)
+        lc = collections.LineCollection(lines, color=color, label=kind, alpha=0.5)
         ax.add_collection(lc)
         #ax.plot([], [])
 
