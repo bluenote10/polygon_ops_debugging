@@ -88,16 +88,27 @@ def init_app(iterations_data, bb):
     )
 
     app.layout = html.Div([
-        dcc.Graph(
-            id='graph-with-slider',
-        ),
         dcc.Slider(
             id='iteration-slider',
             min=0,
             max=len(iterations_data),
             value=0,
             marks={str(i): str(i) for i in range(len(iterations_data))},
-        )
+        ),
+        dcc.Graph(
+            id='graph-with-slider',
+        ),
+        dcc.Textarea(
+            id='textarea',
+            value='',
+            readOnly=True,
+            rows=20,
+            style={
+                'width': '100%',
+                'height': '300px',
+                'font-family': 'monospace',
+            }
+        ),
     ])
 
     @app.callback(
@@ -109,12 +120,12 @@ def init_app(iterations_data, bb):
         print(index, iteration)
 
         traces = []
-        process_event = iteration["processEvent"]
-        se_next_event = iteration.get("seNextEvent")
-        se_prev_event = iteration.get("sePrevEvent")
-        se_post_next_event = iteration.get("sePostNextEvent")
-        se_post_prev_event = iteration.get("sePostPrevEvent")
-        intersections = iteration.get("intersections", [])
+        process_event = iteration.process_event
+        se_next_event = iteration.se_next_event
+        se_prev_event = iteration.se_prev_event
+        se_post_next_event = iteration.se_post_next_event
+        se_post_prev_event = iteration.se_post_prev_event
+        intersections = iteration.intersections
 
         if se_next_event is not None:
             e = Event(se_next_event)
@@ -138,26 +149,11 @@ def init_app(iterations_data, bb):
         traces.append(trace_markers([e.from_x], [e.from_y], e.color, process_event["self"]["addr"]))
         traces.append(trace_markers([e.upto_x], [e.upto_y], "#DDDDDD", process_event["other"]["addr"]))
 
-        """
-        if "computeFields" in iteration:
-            df = pd.DataFrame(iteration["computeFields"])
-        else:
-            df = pd.DataFrame()
-        keys, values = zip(*iteration["computeFields"].items())
-        table = dash_table.DataTable(
-            id='table',
-            columns=[{"keys": keys, "values": values}],
-            data=df.to_dict('records'),
-        )
-        """
-        title = "Right event" if iteration.get("computeFields") is None else str(iteration["computeFields"])
-
         offset_x = (bb[1] - bb[0]) * 0.03
         offset_y = (bb[3] - bb[2]) * 0.03
         return {
             'data': traces,
             'layout': dict(
-                title=title,
                 xaxis={'title': 'x', 'range': [bb[0] - offset_x, bb[1] + offset_x]},
                 yaxis={'title': 'y', 'range': [bb[2] - offset_y, bb[3] + offset_y]},
                 margin={'l': 100, 'b': 50, 't': 50, 'r': 300},
@@ -166,6 +162,18 @@ def init_app(iterations_data, bb):
                 # transition={'duration': 500},
             )
         }
+
+    @app.callback(
+        Output('textarea', 'value'),
+        [Input('iteration-slider', 'value')],
+    )
+    def update_text(index):
+        iteration = iterations_data[index]
+        text = "\n".join([
+            str(line)
+            for line in iteration.lines
+        ])
+        return text
 
     return app
 

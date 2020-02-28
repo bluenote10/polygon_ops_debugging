@@ -38,6 +38,8 @@ def read_file(filename):
             line = line.strip()
             if line.startswith("{") and line.endswith("}"):
                 json_lines.append(json.loads(line))
+            elif len(line.strip()) > 0:
+                json_lines.append({"message": line})
     return json_lines
 
 
@@ -92,22 +94,37 @@ def extract_bounding_box(json_lines):
     return min_x, max_x, min_y, max_y
 
 
-def group_by_iteration(json_lines):
-    iterations = []
-    cur_iteration = {}
-    for line in json_lines:
-        process_event = line.get("processEvent")
-        intersection = line.get("intersection")
-        if process_event is not None:
-            if len(cur_iteration) > 0:
-                iterations.append(cur_iteration)
-            cur_iteration = line.copy()
-        elif intersection is not None:
-            cur_iteration.setdefault("intersections", []).append(intersection)
+class Iteration(object):
+    def __init__(self, lines):
+        self.lines = lines
+        self.process_event = self.extract_unique("processEvent")
+        self.se_next_event = self.extract_unique("seNextEvent")
+        self.se_prev_event = self.extract_unique("sePrevEvent")
+        self.se_post_next_event = self.extract_unique("sePostNextEvent")
+        self.se_post_prev_event = self.extract_unique("sePostPrevEvent")
+        self.intersections = self.extract_list("intersections")
+
+    def extract_unique(self, name):
+        matches = self.extract_list(name)
+        if len(matches) == 0:
+            return None
+        elif len(matches) == 1:
+            return matches[0]
         else:
-            cur_iteration.update(line)
-    if len(cur_iteration) > 0:
-        iterations.append(cur_iteration)
+            raise ValueError("Got multiple matches for {}".format(name))
+
+    def extract_list(self, name):
+        return [line[name] for line in self.lines if name in line]
+
+
+def group_by_iteration(json_lines):
+    iterations_begin_indices = [i for i, line in enumerate(json_lines) if "processEvent" in line]
+    iterations_from_upto = zip(*[iterations_begin_indices, (iterations_begin_indices + [len(json_lines)])[1:]])
+
+    iterations = []
+    for i_from, i_upto in iterations_from_upto:
+        iterations.append(Iteration(json_lines[i_from:i_upto]))
+
     return iterations
 
 
