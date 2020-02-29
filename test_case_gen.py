@@ -344,7 +344,7 @@ def main():
         ]
 
         def get_modifier(i):
-            y_factor = +1 if i < 4 else -1
+            y_factor = +1 if i <= 4 else -1
             if i % 4 == 0:
                 return y_factor, 2*i, 2*i + 1
             elif i % 4 == 1:
