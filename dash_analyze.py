@@ -1,11 +1,13 @@
+import collections
+import json
+
+import pandas as pd
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table
 from dash.dependencies import Input, Output
-
-import json
-import pandas as pd
 
 import analyze_debug_log
 
@@ -81,42 +83,56 @@ def trace_markers(xs, ys, color, name, symbol="circle", size=5):
     )
 
 
-def init_app(iterations_data, bb):
+class AppData(object):
+    def __init__(self):
+        self.iterations_data = None
+        self.bb = None
+
+
+def init_app(args):
     app = dash.Dash(
         __name__,
         external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'],
     )
 
-    app.layout = html.Div([
-        dcc.Slider(
-            id='iteration-slider',
-            min=0,
-            max=len(iterations_data),
-            value=0,
-            marks={str(i): str(i) for i in range(len(iterations_data))},
-        ),
-        dcc.Graph(
-            id='graph-with-slider',
-        ),
-        dcc.Textarea(
-            id='textarea',
-            value='',
-            readOnly=True,
-            rows=20,
-            style={
-                'width': '100%',
-                'height': '300px',
-                'font-family': 'monospace',
-            }
-        ),
-    ])
+    app_data = AppData()
+
+    def reload_app():
+        iterations_data, bb = prepare_data(args)
+        app_data.iterations_data = iterations_data
+        app_data.bb = bb
+        return html.Div([
+            dcc.Slider(
+                id='iteration-slider',
+                min=0,
+                max=len(iterations_data),
+                value=0,
+                marks={str(i): str(i) for i in range(len(iterations_data))},
+            ),
+            dcc.Graph(
+                id='graph-with-slider',
+            ),
+            dcc.Textarea(
+                id='textarea',
+                value='',
+                readOnly=True,
+                rows=20,
+                style={
+                    'width': '100%',
+                    'height': '300px',
+                    'font-family': 'monospace',
+                }
+            ),
+        ])
+
+    app.layout = reload_app
 
     @app.callback(
         Output('graph-with-slider', 'figure'),
         [Input('iteration-slider', 'value')],
     )
     def update_figure(index):
-        iteration = iterations_data[index]
+        iteration = app_data.iterations_data[index]
         print(index, iteration)
 
         traces = []
@@ -149,6 +165,7 @@ def init_app(iterations_data, bb):
         traces.append(trace_markers([e.from_x], [e.from_y], e.color, process_event["self"]["addr"]))
         traces.append(trace_markers([e.upto_x], [e.upto_y], "#DDDDDD", process_event["other"]["addr"]))
 
+        bb = app_data.bb
         offset_x = (bb[1] - bb[0]) * 0.03
         offset_y = (bb[3] - bb[2]) * 0.03
         return {
@@ -168,7 +185,7 @@ def init_app(iterations_data, bb):
         [Input('iteration-slider', 'value')],
     )
     def update_text(index):
-        iteration = iterations_data[index]
+        iteration = app_data.iterations_data[index]
         text = "\n".join([
             str(line)
             for line in iteration.lines
@@ -180,8 +197,7 @@ def init_app(iterations_data, bb):
 
 def main():
     args = analyze_debug_log.parse_args()
-    iterations_data, bb = prepare_data(args)
-    app = init_app(iterations_data, bb)
+    app = init_app(args)
     app.run_server(debug=True)
 
 
