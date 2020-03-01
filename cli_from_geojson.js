@@ -95,7 +95,7 @@ function main() {
   }
 }
 
-
+/*
 function main_old() {
   var args = process.argv.slice(2)
 
@@ -148,7 +148,7 @@ function main_old() {
 
   }
 
-
 }
+*/
 
 main()
