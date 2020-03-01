@@ -1,0 +1,1495 @@
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 5.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9535 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [987.47 us 993.40 us 999.73 us]
+                        change: [+0.2758% +0.9957% +1.7124%] (p = 0.01 < 0.05)
+                        Change within noise threshold.
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9482 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [965.19 us 968.79 us 973.11 us]
+                        change: [-3.7157% -3.1926% -2.6594%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 12 outliers among 100 measurements (12.00%)
+  1 (1.00%) low severe
+  1 (1.00%) low mild
+  2 (2.00%) high mild
+  8 (8.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9252 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [961.07 us 961.76 us 963.15 us]
+                        change: [-0.7376% -0.4975% -0.2946%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) low mild
+  2 (2.00%) high mild
+  4 (4.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.8965 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [970.77 us 975.49 us 980.72 us]
+                        change: [+0.7856% +1.0335% +1.3686%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 20 outliers among 100 measurements (20.00%)
+  1 (1.00%) low severe
+  3 (3.00%) low mild
+  4 (4.00%) high mild
+  12 (12.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.8676 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [959.77 us 960.11 us 960.72 us]
+                        change: [-1.4605% -1.1627% -0.8980%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 8 outliers among 100 measurements (8.00%)
+  1 (1.00%) low mild
+  4 (4.00%) high mild
+  3 (3.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9014 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [970.64 us 973.54 us 977.05 us]
+                        change: [+1.1296% +1.4453% +1.8073%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 21 outliers among 100 measurements (21.00%)
+  1 (1.00%) low mild
+  2 (2.00%) high mild
+  18 (18.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9210 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [1.0107 ms 1.0145 ms 1.0177 ms]
+                        change: [+3.0418% +3.6021% +4.1148%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9353 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [981.82 us 987.48 us 993.32 us]
+                        change: [-2.9193% -2.3107% -1.7162%] (p = 0.00 < 0.05)
+                        Performance has improved.
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.8731 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [959.78 us 963.26 us 967.56 us]
+                        change: [-2.9669% -2.4878% -2.0036%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 8 outliers among 100 measurements (8.00%)
+  1 (1.00%) low mild
+  2 (2.00%) high mild
+  5 (5.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.8824 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [970.52 us 973.91 us 977.86 us]
+                        change: [+0.9004% +1.2486% +1.5798%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 21 outliers among 100 measurements (21.00%)
+  1 (1.00%) low severe
+  1 (1.00%) high mild
+  19 (19.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 5.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9827 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [970.16 us 976.17 us 982.56 us]
+                        change: [-0.7017% -0.2805% +0.1293%] (p = 0.19 > 0.05)
+                        No change in performance detected.
+Found 14 outliers among 100 measurements (14.00%)
+  1 (1.00%) low severe
+  2 (2.00%) low mild
+  2 (2.00%) high mild
+  9 (9.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 5.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9579 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [1.0009 ms 1.0041 ms 1.0083 ms]
+                        change: [+2.9379% +3.2718% +3.6005%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+Found 13 outliers among 100 measurements (13.00%)
+  1 (1.00%) low severe
+  3 (3.00%) high mild
+  9 (9.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.8598 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [979.33 us 985.99 us 992.64 us]
+                        change: [-2.8807% -2.4388% -1.9895%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 24 outliers among 100 measurements (24.00%)
+  24 (24.00%) high mild
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 5.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 5.0192 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [997.96 us 1.0044 ms 1.0106 ms]
+                        change: [+1.6830% +2.3375% +3.0307%] (p = 0.00 < 0.05)
+                        Performance has regressed.
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9093 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [980.27 us 985.18 us 991.03 us]
+                        change: [-1.7232% -1.0589% -0.3649%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 5.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9615 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [1.0071 ms 1.0120 ms 1.0166 ms]
+                        change: [+0.9878% +1.6544% +2.3356%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 5.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 5.0135 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [965.27 us 966.81 us 969.25 us]
+                        change: [-4.4468% -4.0113% -3.5562%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 12 outliers among 100 measurements (12.00%)
+  2 (2.00%) low severe
+  1 (1.00%) low mild
+  5 (5.00%) high mild
+  4 (4.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.8919 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [970.32 us 973.14 us 976.51 us]
+                        change: [+0.4327% +0.7183% +1.0186%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 23 outliers among 100 measurements (23.00%)
+  2 (2.00%) low severe
+  3 (3.00%) high mild
+  18 (18.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 4.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9446 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [975.74 us 979.25 us 983.57 us]
+                        change: [+0.1132% +0.5327% +0.9490%] (p = 0.01 < 0.05)
+                        Change within noise threshold.
+Found 22 outliers among 100 measurements (22.00%)
+  1 (1.00%) low severe
+  5 (5.00%) low mild
+  6 (6.00%) high mild
+  10 (10.00%) high severe
+
+
+running 35 tests
+test boolean::compare_segments::test::collinear_same_polygon_different_left ... ignored
+test boolean::compare_segments::test::collinear_segments ... ignored
+test boolean::compare_segments::test::collinear_shared_left_point ... ignored
+test boolean::compare_segments::test::not_collinear_different_left_point_right_sort_y ... ignored
+test boolean::compare_segments::test::not_collinear_first_point_is_below ... ignored
+test boolean::compare_segments::test::not_collinear_order_in_sweep_line ... ignored
+test boolean::compare_segments::test::not_collinear_shared_left_right_first ... ignored
+test boolean::compare_segments::test::t_shaped_cases ... ignored
+test boolean::compare_segments::test::vertical_segment ... ignored
+test boolean::divide_segment::test::divide_segments ... ignored
+test boolean::fill_queue::test::test_collinear_edges ... ignored
+test boolean::fill_queue::test::test_least_by_x ... ignored
+test boolean::fill_queue::test::test_least_by_y ... ignored
+test boolean::fill_queue::test::test_least_left ... ignored
+test boolean::fill_queue::test::test_shared_edge_not_colinear ... ignored
+test boolean::helper::test::test_float_type_trait ... ignored
+test boolean::segment_intersection::test::test_constrain_to_bounding_box ... ignored
+test boolean::segment_intersection::test::test_get_intersection_bounding_box ... ignored
+test boolean::segment_intersection::test::test_intersection ... ignored
+test boolean::signed_area::test::test_analytical_signed_area ... ignored
+test boolean::sweep_event::test::test_is_above ... ignored
+test boolean::sweep_event::test::test_is_below ... ignored
+test boolean::sweep_event::test::test_is_vertical ... ignored
+test splay::test::find_empty ... ignored
+test splay::test::find_not_found ... ignored
+test splay::test::get_works ... ignored
+test splay::test::insert_replace ... ignored
+test splay::test::insert_simple ... ignored
+test splay::test::into_iter ... ignored
+test splay::test::into_iter_backwards ... ignored
+test splay::test::large ... ignored
+test splay::test::pop_simple ... ignored
+test splay::test::remove_simple ... ignored
+test splay::test::test_clear ... ignored
+test splay::test::test_len ... ignored
+
+test result: ok. 0 passed; 0 failed; 35 ignored; 0 measured; 0 filtered out
+
+
+running 6 tests
+test fill_queue_test::test_fill_event_queue ... ignored
+test fill_queue_test::test_two_polygons ... ignored
+test generic_test_cases::test_generic_test_cases ... ignored
+test possible_intersection_test::test_on_two_polygons ... ignored
+test possible_intersection_test::test_possible_intersection ... ignored
+test subdivide_segments_test::test_sweep_line ... ignored
+
+test result: ok. 0 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 3.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 5.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 4.9591 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [990.15 us 996.84 us 1.0031 ms]
+                        change: [+0.1585% +0.6953% +1.2275%] (p = 0.01 < 0.05)
+                        Change within noise threshold.
+
