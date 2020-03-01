@@ -37,7 +37,10 @@ def read_file(filename):
         for line in f.readlines():
             line = line.strip()
             if line.startswith("{") and line.endswith("}"):
-                json_lines.append(json.loads(line))
+                try:
+                    json_lines.append(json.loads(line))
+                except ValueError:
+                    raise ValueError("Failed to json.loads: {}".format(line))
             elif len(line.strip()) > 0:
                 json_lines.append({"message": line})
     return json_lines
@@ -81,8 +84,8 @@ def extract_bounding_box(json_lines):
         if process_event is not None:
             for name in ["self", "other"]:
                 event = process_event[name]
-                x = event["point"]["x"]
-                y = event["point"]["y"]
+                x = event["point"][0]
+                y = event["point"][1]
                 if x < min_x or min_x is None:
                     min_x = x
                 if x > max_x or max_x is None:

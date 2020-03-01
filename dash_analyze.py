@@ -25,10 +25,10 @@ def prepare_data(args):
 class Event(object):
     def __init__(self, event):
         self.event = event
-        self.from_x = event["self"]["point"]["x"]
-        self.from_y = event["self"]["point"]["y"]
-        self.upto_x = event["other"]["point"]["x"]
-        self.upto_y = event["other"]["point"]["y"]
+        self.from_x = event["self"]["point"][0]
+        self.from_y = event["self"]["point"][1]
+        self.upto_x = event["other"]["point"][0]
+        self.upto_y = event["other"]["point"][1]
 
         self.is_left = event["self"]["type"] == "L"
 
@@ -156,8 +156,8 @@ def init_app(args):
             e = Event(se_post_prev_event)
             traces.append(trace_line(e.segment, "on-remove prev", color="#8f43e6"))
         for i, intersection in enumerate(intersections):
-            x = intersection["x"]
-            y = intersection["y"]
+            x = intersection[0]
+            y = intersection[1]
             traces.append(trace_markers([x], [y], "#000000", "intersection {}".format(i + 1), symbol="x", size=7))
 
         e = Event(process_event)
