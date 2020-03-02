@@ -340,23 +340,25 @@ def main():
     elif args.mode == Modes.overlapping_segments2:
         polys_a = [
             [gen_poly(2*i, -1, 2*i+1, +1)]
-            for i in range(1, 9)
+            for i in range(1, 11)
         ]
 
         def get_modifier(i):
-            y_factor = +1 if i <= 4 else -1
-            if i % 4 == 0:
-                return y_factor, 2*i, 2*i + 1
-            elif i % 4 == 1:
+            y_factor = +1 if i <= 5 else -1
+            if i % 5 == 1:
                 return y_factor, 2*i, 2*i + 0.5
-            elif i % 4 == 2:
+            elif i % 5 == 2:
                 return y_factor, 2*i + 0.5, 2*i + 1
-            elif i % 4 == 3:
+            elif i % 5 == 3:
                 return y_factor, 2*i + 0.25, 2*i + 0.75
+            elif i % 5 == 4:
+                return y_factor, 2 * i, 2 * i + 1
+            elif i % 5 == 0:
+                return y_factor, 2*i - 0.5, 2*i + 0.5
 
         polys_b = [
             [gen_poly(x_min, +1 * y_factor, x_max, +2 * y_factor)]
-            for y_factor, x_min, x_max in [get_modifier(i) for i in range(1, 9)]
+            for y_factor, x_min, x_max in [get_modifier(i) for i in range(1, 11)]
         ]
 
     elif args.mode == Modes.overlapping_segments3:
