@@ -1,0 +1,48 @@
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 5.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 14.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 13.976 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [1.0010 ms 1.0027 ms 1.0043 ms]
+                        change: [-1.8933% -1.4850% -1.0691%] (p = 0.00 < 0.05)
+                        Performance has improved.
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high mild
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 5.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 13.9s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 13.869 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [1.0002 ms 1.0015 ms 1.0027 ms]
+                        change: [-0.2805% -0.0413% +0.2008%] (p = 0.74 > 0.05)
+                        No change in performance detected.
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 5.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 13.8s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 13.847 s (5050 iterations)
+Benchmarking issue96 / intersection: Analyzing
+issue96 / intersection  time:   [994.60 us 995.38 us 996.23 us]
+                        change: [-0.7725% -0.5690% -0.3562%] (p = 0.00 < 0.05)
+                        Change within noise threshold.
+Found 9 outliers among 100 measurements (9.00%)
+  3 (3.00%) low mild
+  5 (5.00%) high mild
+  1 (1.00%) high severe
+
+Gnuplot not found, using plotters backend
+Benchmarking issue96 / intersection
+Benchmarking issue96 / intersection: Warming up for 5.0000 s
+
+Warning: Unable to complete 100 samples in 1.0ms. You may wish to increase target time to 14.0s or reduce sample count to 10.
+Benchmarking issue96 / intersection: Collecting 100 samples in estimated 14.047 s (5050 iterations)
