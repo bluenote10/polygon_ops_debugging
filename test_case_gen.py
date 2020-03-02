@@ -55,6 +55,7 @@ class Modes(object):
     overlapping_segments2 = "overlapping_segments2"
     overlapping_segments3 = "overlapping_segments3"
     collinear_segments1 = "collinear_segments1"
+    self_overlaps1 = "self_overlaps1"
     rust_issue12 = "rust_issue12"
 
 
@@ -368,6 +369,40 @@ def main():
     elif args.mode == Modes.collinear_segments1:
         polys_a = [[subdivide_ring(gen_poly(0, 0, 1, 1), 4)]]
         polys_b = [[subdivide_ring(gen_poly(0, 0.25, 1, 1.25), 4)]]
+
+    elif args.mode == Modes.self_overlaps1:
+        polys_a = [
+            [gen_poly(0, +1, 1, +2)],
+            [gen_poly(1, +1, 2, +2)],
+            [gen_poly(3, +1, 4, +2)],
+            [gen_poly(3, +2, 4, +3)],
+            [close_ring([
+                [5, +1],
+                [5, +2],
+                [6, +2],
+            ])],
+            [close_ring([
+                [6, +2],
+                [6, +1],
+                [5, +1],
+            ])],
+        ]
+        polys_b = [
+            [gen_poly(0, -1, 1, -2)],
+            [gen_poly(1, -1, 2, -2)],
+            [gen_poly(3, -1, 4, -2)],
+            [gen_poly(3, -2, 4, -3)],
+            [close_ring([
+                [5, -1],
+                [5, -2],
+                [6, -2],
+            ])],
+            [close_ring([
+                [6, -2],
+                [6, -1],
+                [5, -1],
+            ])],
+        ]
 
     elif args.mode == Modes.rust_issue12:
         polys_a = convert_from_geo_type_json(RUST_ISSUE12_A)
