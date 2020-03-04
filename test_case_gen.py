@@ -54,15 +54,10 @@ class Modes(object):
     overlapping_segments1 = "overlapping_segments1"
     overlapping_segments2 = "overlapping_segments2"
     overlapping_segments3 = "overlapping_segments3"
+    overlapping_segments4 = "overlapping_segments4"
     collinear_segments1 = "collinear_segments1"
     self_overlaps1 = "self_overlaps1"
     rust_issue12 = "rust_issue12"
-
-
-RUST_ISSUE12_A = """[{"exterior":[{"x":0.0,"y":0.0},{"x":128.0,"y":0.0},{"x":128.0,"y":16.0},{"x":16.0,"y":16.0},{"x":16.0,"y":32.0},{"x":32.0,"y":48.0},{"x":32.0,"y":208.0},{"x":48.0,"y":224.0},{"x":64.0,"y":224.0},{"x":64.0,"y":256.0},{"x":80.0,"y":272.0},{"x":0.0,"y":272.0},{"x":0.0,"y":256.0},{"x":0.0,"y":0.0}],"interiors":[]},{"exterior":[{"x":64.0,"y":96.0},{"x":80.0,"y":80.0},{"x":96.0,"y":96.0},{"x":96.0,"y":128.0},{"x":112.0,"y":144.0},{"x":96.0,"y":160.0},{"x":64.0,"y":128.0},{"x":64.0,"y":96.0}],"interiors":[]},{"exterior":[{"x":160.0,"y":176.0},{"x":176.0,"y":160.0},{"x":176.0,"y":144.0},{"x":192.0,"y":128.0},{"x":208.0,"y":128.0},{"x":224.0,"y":144.0},{"x":224.0,"y":160.0},{"x":240.0,"y":176.0},{"x":256.0,"y":176.0},{"x":272.0,"y":192.0},{"x":272.0,"y":208.0},{"x":288.0,"y":208.0},{"x":304.0,"y":192.0},{"x":304.0,"y":144.0},{"x":320.0,"y":128.0},{"x":336.0,"y":128.0},{"x":352.0,"y":144.0},{"x":352.0,"y":176.0},{"x":368.0,"y":192.0},{"x":368.0,"y":224.0},{"x":352.0,"y":240.0},{"x":256.0,"y":240.0},{"x":176.0,"y":240.0},{"x":160.0,"y":224.0},{"x":160.0,"y":176.0}],"interiors":[]},{"exterior":[{"x":192.0,"y":0.0},{"x":256.0,"y":0.0},{"x":480.0,"y":0.0},{"x":480.0,"y":64.0},{"x":464.0,"y":48.0},{"x":416.0,"y":48.0},{"x":400.0,"y":32.0},{"x":416.0,"y":32.0},{"x":400.0,"y":32.0},{"x":336.0,"y":32.0},{"x":320.0,"y":48.0},{"x":304.0,"y":48.0},{"x":304.0,"y":32.0},{"x":288.0,"y":16.0},{"x":256.0,"y":16.0},{"x":192.0,"y":16.0},{"x":192.0,"y":0.0}],"interiors":[]},{"exterior":[{"x":416.0,"y":80.0},{"x":432.0,"y":64.0},{"x":448.0,"y":64.0},{"x":448.0,"y":96.0},{"x":432.0,"y":96.0},{"x":416.0,"y":80.0}],"interiors":[]},{"exterior":[{"x":416.0,"y":256.0},{"x":432.0,"y":240.0},{"x":432.0,"y":224.0},{"x":448.0,"y":208.0},{"x":480.0,"y":208.0},{"x":480.0,"y":256.0},{"x":416.0,"y":256.0}],"interiors":[]}]"""
-RUST_ISSUE12_B = """[{"exterior":[{"x":400.0,"y":272.0},{"x":416.0,"y":256.0},{"x":480.0,"y":256.0},{"x":480.0,"y":272.0},{"x":400.0,"y":272.0}],"interiors":[]}]"""
-RUST_ISSUE12_C = """[{"exterior":[{"x":384.0,"y":0.0},{"x":416.0,"y":0.0},{"x":448.0,"y":0.0},{"x":448.0,"y":32.0},{"x":416.0,"y":32.0},{"x":384.0,"y":32.0},{"x":384.0,"y":0.0}],"interiors":[]}]"""
-RUST_ISSUE12_D = """[{"exterior":[{"x":400.0,"y":32.0},{"x":416.0,"y":32.0},{"x":416.0,"y":48.0},{"x":400.0,"y":32.0}],"interiors":[]}]"""
 
 
 def parse_args():
@@ -85,6 +80,34 @@ def parse_args():
     return args
 
 
+RUST_ISSUE12_A = """[{"exterior":[{"x":0.0,"y":0.0},{"x":128.0,"y":0.0},{"x":128.0,"y":16.0},{"x":16.0,"y":16.0},{"x":16.0,"y":32.0},{"x":32.0,"y":48.0},{"x":32.0,"y":208.0},{"x":48.0,"y":224.0},{"x":64.0,"y":224.0},{"x":64.0,"y":256.0},{"x":80.0,"y":272.0},{"x":0.0,"y":272.0},{"x":0.0,"y":256.0},{"x":0.0,"y":0.0}],"interiors":[]},{"exterior":[{"x":64.0,"y":96.0},{"x":80.0,"y":80.0},{"x":96.0,"y":96.0},{"x":96.0,"y":128.0},{"x":112.0,"y":144.0},{"x":96.0,"y":160.0},{"x":64.0,"y":128.0},{"x":64.0,"y":96.0}],"interiors":[]},{"exterior":[{"x":160.0,"y":176.0},{"x":176.0,"y":160.0},{"x":176.0,"y":144.0},{"x":192.0,"y":128.0},{"x":208.0,"y":128.0},{"x":224.0,"y":144.0},{"x":224.0,"y":160.0},{"x":240.0,"y":176.0},{"x":256.0,"y":176.0},{"x":272.0,"y":192.0},{"x":272.0,"y":208.0},{"x":288.0,"y":208.0},{"x":304.0,"y":192.0},{"x":304.0,"y":144.0},{"x":320.0,"y":128.0},{"x":336.0,"y":128.0},{"x":352.0,"y":144.0},{"x":352.0,"y":176.0},{"x":368.0,"y":192.0},{"x":368.0,"y":224.0},{"x":352.0,"y":240.0},{"x":256.0,"y":240.0},{"x":176.0,"y":240.0},{"x":160.0,"y":224.0},{"x":160.0,"y":176.0}],"interiors":[]},{"exterior":[{"x":192.0,"y":0.0},{"x":256.0,"y":0.0},{"x":480.0,"y":0.0},{"x":480.0,"y":64.0},{"x":464.0,"y":48.0},{"x":416.0,"y":48.0},{"x":400.0,"y":32.0},{"x":416.0,"y":32.0},{"x":400.0,"y":32.0},{"x":336.0,"y":32.0},{"x":320.0,"y":48.0},{"x":304.0,"y":48.0},{"x":304.0,"y":32.0},{"x":288.0,"y":16.0},{"x":256.0,"y":16.0},{"x":192.0,"y":16.0},{"x":192.0,"y":0.0}],"interiors":[]},{"exterior":[{"x":416.0,"y":80.0},{"x":432.0,"y":64.0},{"x":448.0,"y":64.0},{"x":448.0,"y":96.0},{"x":432.0,"y":96.0},{"x":416.0,"y":80.0}],"interiors":[]},{"exterior":[{"x":416.0,"y":256.0},{"x":432.0,"y":240.0},{"x":432.0,"y":224.0},{"x":448.0,"y":208.0},{"x":480.0,"y":208.0},{"x":480.0,"y":256.0},{"x":416.0,"y":256.0}],"interiors":[]}]"""
+RUST_ISSUE12_B = """[{"exterior":[{"x":400.0,"y":272.0},{"x":416.0,"y":256.0},{"x":480.0,"y":256.0},{"x":480.0,"y":272.0},{"x":400.0,"y":272.0}],"interiors":[]}]"""
+RUST_ISSUE12_C = """[{"exterior":[{"x":384.0,"y":0.0},{"x":416.0,"y":0.0},{"x":448.0,"y":0.0},{"x":448.0,"y":32.0},{"x":416.0,"y":32.0},{"x":384.0,"y":32.0},{"x":384.0,"y":0.0}],"interiors":[]}]"""
+RUST_ISSUE12_D = """[{"exterior":[{"x":400.0,"y":32.0},{"x":416.0,"y":32.0},{"x":416.0,"y":48.0},{"x":400.0,"y":32.0}],"interiors":[]}]"""
+
+
+def convert_from_geo_type_json(string_data):
+    """
+    Converter for stuff posted on GitHub in geo-types jsons.
+    """
+    json_data = json.loads(string_data)
+
+    def convert_ring(coords):
+        return [
+            [coord["x"], coord["y"]] for coord in coords
+        ]
+
+    geojson_data = [
+        [convert_ring(poly["exterior"])] + [convert_ring(interior) for interior in poly["interiors"]]
+        for poly in json_data
+    ]
+    return geojson_data
+
+
+# -----------------------------------------------------------------------------
+# Geometry data types
+# -----------------------------------------------------------------------------
+
 class Rect(object):
     def __init__(self, x_min, y_min, x_max, y_max):
         self.x_min = x_min
@@ -106,6 +129,10 @@ class Rect(object):
             self.y_max,
         )
 
+
+# -----------------------------------------------------------------------------
+# Geometry helpers
+# -----------------------------------------------------------------------------
 
 def swap_xy(polys):
     return [
@@ -171,6 +198,10 @@ def gen_square(size, center_x=0, center_y=0):
     )
 
 
+# -----------------------------------------------------------------------------
+# Generators
+# -----------------------------------------------------------------------------
+
 def gen_rects_ulp_slopes(x_ext=1.0, y_ext=2.0):
     n = 9
     xs = np.linspace(-x_ext, +x_ext, 2 * n)
@@ -217,20 +248,119 @@ def gen_many_rects(seed):
     return polys
 
 
-def convert_from_geo_type_json(string_data):
-    json_data = json.loads(string_data)
-
-    def convert_ring(coords):
-        return [
-            [coord["x"], coord["y"]] for coord in coords
-        ]
-
-    geojson_data = [
-        [convert_ring(poly["exterior"])] + [convert_ring(interior) for interior in poly["interiors"]]
-        for poly in json_data
+def gen_overlapping_segments_1():
+    polys_a = [
+        [close_ring([
+            [10, +10],
+            [15, +10],
+            [15, +20],
+        ])],
+        [close_ring([
+            [10, -10],
+            [15, -10],
+            [15, -20],
+        ])],
+        [close_ring([
+            [20, +10],
+            [25, +10],
+            [25, +20],
+        ])],
+        [close_ring([
+            [20, -10],
+            [25, -10],
+            [25, -20],
+        ])],
     ]
-    return geojson_data
+    polys_b = [
+        [close_ring([
+            [10, +10],
+            [15, +10],
+            [15, +15],
+        ])],
+        [close_ring([
+            [10, -10],
+            [15, -10],
+            [15, -15],
+        ])],
+        [close_ring([
+            [20, +10],
+            [25, +10],
+            [25, +5],
+        ])],
+        [close_ring([
+            [20, -10],
+            [25, -10],
+            [25, -5],
+        ])],
+    ]
+    return polys_a, polys_b
 
+
+def gen_overlapping_segments_boxes():
+    polys_a = [
+        [gen_poly(2 * i, -1, 2 * i + 1, +1)]
+        for i in range(1, 11)
+    ]
+
+    def get_modifier(i):
+        y_factor = +1 if i <= 5 else -1
+        if i % 5 == 1:
+            return y_factor, 2 * i, 2 * i + 0.5
+        elif i % 5 == 2:
+            return y_factor, 2 * i + 0.5, 2 * i + 1
+        elif i % 5 == 3:
+            return y_factor, 2 * i + 0.25, 2 * i + 0.75
+        elif i % 5 == 4:
+            return y_factor, 2 * i, 2 * i + 1
+        elif i % 5 == 0:
+            return y_factor, 2 * i - 0.5, 2 * i + 0.5
+
+    polys_b = [
+        [gen_poly(x_min, +1 * y_factor, x_max, +2 * y_factor)]
+        for y_factor, x_min, x_max in [get_modifier(i) for i in range(1, 11)]
+    ]
+    return polys_a, polys_b
+
+
+def gen_self_overlaps_1():
+    polys_a = [
+        [gen_poly(0, +1, 1, +2)],
+        [gen_poly(1, +1, 2, +2)],
+        [gen_poly(3, +1, 4, +2)],
+        [gen_poly(3, +2, 4, +3)],
+        [close_ring([
+            [5, +1],
+            [5, +2],
+            [6, +2],
+        ])],
+        [close_ring([
+            [6, +2],
+            [6, +1],
+            [5, +1],
+        ])],
+    ]
+    polys_b = [
+        [gen_poly(0, -1, 1, -2)],
+        [gen_poly(1, -1, 2, -2)],
+        [gen_poly(3, -1, 4, -2)],
+        [gen_poly(3, -2, 4, -3)],
+        [close_ring([
+            [5, -1],
+            [5, -2],
+            [6, -2],
+        ])],
+        [close_ring([
+            [6, -2],
+            [6, -1],
+            [5, -1],
+        ])],
+    ]
+    return polys_a, polys_b
+
+
+# -----------------------------------------------------------------------------
+# Main
+# -----------------------------------------------------------------------------
 
 def main():
     args = parse_args()
@@ -293,116 +423,26 @@ def main():
         polys_b = gen_many_rects(2)
 
     elif args.mode == Modes.overlapping_segments1:
-        polys_a = [
-            [close_ring([
-                [10, +10],
-                [15, +10],
-                [15, +20],
-            ])],
-            [close_ring([
-                [10, -10],
-                [15, -10],
-                [15, -20],
-            ])],
-            [close_ring([
-                [20, +10],
-                [25, +10],
-                [25, +20],
-            ])],
-            [close_ring([
-                [20, -10],
-                [25, -10],
-                [25, -20],
-            ])],
-        ]
-        polys_b = [
-            [close_ring([
-                [10, +10],
-                [15, +10],
-                [15, +15],
-            ])],
-            [close_ring([
-                [10, -10],
-                [15, -10],
-                [15, -15],
-            ])],
-            [close_ring([
-                [20, +10],
-                [25, +10],
-                [25,  +5],
-            ])],
-            [close_ring([
-                [20, -10],
-                [25, -10],
-                [25,  -5],
-            ])],
-        ]
+        polys_a, polys_b = gen_overlapping_segments_1()
 
     elif args.mode == Modes.overlapping_segments2:
-        polys_a = [
-            [gen_poly(2*i, -1, 2*i+1, +1)]
-            for i in range(1, 11)
-        ]
-
-        def get_modifier(i):
-            y_factor = +1 if i <= 5 else -1
-            if i % 5 == 1:
-                return y_factor, 2*i, 2*i + 0.5
-            elif i % 5 == 2:
-                return y_factor, 2*i + 0.5, 2*i + 1
-            elif i % 5 == 3:
-                return y_factor, 2*i + 0.25, 2*i + 0.75
-            elif i % 5 == 4:
-                return y_factor, 2 * i, 2 * i + 1
-            elif i % 5 == 0:
-                return y_factor, 2*i - 0.5, 2*i + 0.5
-
-        polys_b = [
-            [gen_poly(x_min, +1 * y_factor, x_max, +2 * y_factor)]
-            for y_factor, x_min, x_max in [get_modifier(i) for i in range(1, 11)]
-        ]
-
-    elif args.mode == Modes.overlapping_segments3:
         polys_a = convert_from_geo_type_json(RUST_ISSUE12_C)
         polys_b = convert_from_geo_type_json(RUST_ISSUE12_D)
+
+    elif args.mode == Modes.overlapping_segments3:
+        polys_a, polys_b = gen_overlapping_segments_boxes()
+
+    elif args.mode == Modes.overlapping_segments4:
+        polys_a, polys_b = gen_overlapping_segments_boxes()
+        polys_a = swap_xy(polys_a)
+        polys_b = swap_xy(polys_b)
 
     elif args.mode == Modes.collinear_segments1:
         polys_a = [[subdivide_ring(gen_poly(0, 0, 1, 1), 4)]]
         polys_b = [[subdivide_ring(gen_poly(0, 0.25, 1, 1.25), 4)]]
 
     elif args.mode == Modes.self_overlaps1:
-        polys_a = [
-            [gen_poly(0, +1, 1, +2)],
-            [gen_poly(1, +1, 2, +2)],
-            [gen_poly(3, +1, 4, +2)],
-            [gen_poly(3, +2, 4, +3)],
-            [close_ring([
-                [5, +1],
-                [5, +2],
-                [6, +2],
-            ])],
-            [close_ring([
-                [6, +2],
-                [6, +1],
-                [5, +1],
-            ])],
-        ]
-        polys_b = [
-            [gen_poly(0, -1, 1, -2)],
-            [gen_poly(1, -1, 2, -2)],
-            [gen_poly(3, -1, 4, -2)],
-            [gen_poly(3, -2, 4, -3)],
-            [close_ring([
-                [5, -1],
-                [5, -2],
-                [6, -2],
-            ])],
-            [close_ring([
-                [6, -2],
-                [6, -1],
-                [5, -1],
-            ])],
-        ]
+        polys_a, polys_b = gen_self_overlaps_1()
 
     elif args.mode == Modes.rust_issue12:
         polys_a = convert_from_geo_type_json(RUST_ISSUE12_A)
