@@ -58,6 +58,7 @@ class Modes(object):
     collinear_segments1 = "collinear_segments1"
     self_overlaps1 = "self_overlaps1"
     rust_issue12 = "rust_issue12"
+    many_vertical1 = "many_vertical1"
 
 
 def parse_args():
@@ -358,6 +359,36 @@ def gen_self_overlaps_1():
     return polys_a, polys_b
 
 
+def gen_many_vertical1():
+
+    def generate(x0, x1, seed, n=10):
+        np.random.seed(seed)
+
+        ys = np.sort(np.random.uniform(-1.0, +1.0, size=2*n)).reshape(n, 2)
+        polys = [
+            [close_ring([
+                [x0, 0],
+                [x1, y0],
+                [x1, y1],
+            ])]
+            for y0, y1 in ys
+        ]
+        return polys
+        """
+        for y0, y1 in ys:
+        close_ring([
+            [10, +10],
+            [15, +10],
+            [15, +20],
+        ])
+        """
+        #import IPython; IPython.embed()
+
+    polys_a = generate(-1.0, +0.5, seed=0)
+    polys_b = generate(+1.0, -0.5, seed=1)
+    return polys_a, polys_b
+
+
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
@@ -447,6 +478,9 @@ def main():
     elif args.mode == Modes.rust_issue12:
         polys_a = convert_from_geo_type_json(RUST_ISSUE12_A)
         polys_b = convert_from_geo_type_json(RUST_ISSUE12_B)
+
+    elif args.mode == Modes.many_vertical1:
+        polys_a, polys_b = gen_many_vertical1()
 
     else:
         raise ValueError("Invalid mode: {}".format(args.mode))
