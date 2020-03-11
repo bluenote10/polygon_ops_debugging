@@ -105,7 +105,7 @@ def init_app(args):
             dcc.Slider(
                 id='iteration-slider',
                 min=0,
-                max=len(iterations_data),
+                max=len(iterations_data) - 1,
                 value=0,
                 marks={str(i): str(i) for i in range(len(iterations_data))},
             ),
@@ -132,10 +132,15 @@ def init_app(args):
         [Input('iteration-slider', 'value')],
     )
     def update_figure(index):
+        traces = []
+
+        for iteration in app_data.iterations_data:
+            e = Event(iteration.process_event)
+            traces.append(trace_line(e.segment, name=None, color="#eeeeee"))
+
         iteration = app_data.iterations_data[index]
         print(index, iteration)
 
-        traces = []
         process_event = iteration.process_event
         se_next_event = iteration.se_next_event
         se_prev_event = iteration.se_prev_event
@@ -198,7 +203,7 @@ def init_app(args):
 def main():
     args = analyze_debug_log.parse_args()
     app = init_app(args)
-    app.run_server(debug=True)
+    app.run_server(debug=True, dev_tools_ui=True)
 
 
 if __name__ == '__main__':
