@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 
-import collections
 import json
-
-import pandas as pd
+import re
 
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-data = """
+data_two_triangles = """
 Coordinate { x: -15.0, y: -15.0 }
 jumping to pos 16
 Coordinate { x: 285.0, y: -15.0 }
@@ -43,9 +41,23 @@ jumping to pos 1
 Coordinate { x: -15.0, y: -15.0 }
 """
 
+data = data_two_triangles
+
+
 def prepare_data():
+
+    def process_line(line):
+        m = re.search(r"({.*})", line)
+        d = json.loads(m.group(1).replace('x', '"x"').replace('y', '"y"'))
+        m = re.search(r"contour_id: (\d+)", line)
+        if m is not None:
+            d["contour_id"] = m.group(1)
+        else:
+            d["contour_id"] = 0
+        return d
+
     points = [
-        json.loads(line.strip("Coordinate").replace('x', '"x"').replace('y', '"y"'))
+        process_line(line)
         for line in data.split("\n")
         if line.startswith("Coordinate")
     ]
@@ -57,29 +69,6 @@ def prepare_data():
     bb = min_x, max_x, min_y, max_y
 
     return points, bb
-
-
-class Event(object):
-    def __init__(self, event):
-        self.event = event
-        self.from_x = event["self"]["point"][0]
-        self.from_y = event["self"]["point"][1]
-        self.upto_x = event["other"]["point"][0]
-        self.upto_y = event["other"]["point"][1]
-
-        self.is_left = event["self"]["type"] == "L"
-
-        if self.is_left:
-            self.color = "#00FF00"
-        else:
-            self.color = "#FF0000"
-
-        self.segment = [
-            self.from_x,
-            self.from_y,
-            self.upto_x,
-            self.upto_y,
-        ]
 
 
 def trace_line(segment, name=None, color=None):
@@ -140,40 +129,42 @@ def init_app():
         app_data.bb = bb
         return html.Div([
             dcc.Slider(
-                id='iteration-slider',
+                id="slider",
                 min=0,
                 max=len(points) - 1,
                 value=0,
                 marks={str(i): str(i) for i in range(len(points))},
             ),
             dcc.Graph(
-                id='graph-with-slider',
-            ),
-            dcc.Textarea(
-                id='textarea',
-                value='',
-                readOnly=True,
-                rows=20,
+                id="graph",
                 style={
-                    'width': '100%',
-                    'height': '300px',
-                    'font-family': 'monospace',
+                    "height":  "800px",
                 }
             ),
-        ])
+        ], style={
+            "margin": "0 auto",
+            "textAlign": "center",
+            "width": "1400px",
+        })
 
     app.layout = reload_app
 
     @app.callback(
-        Output('graph-with-slider', 'figure'),
-        [Input('iteration-slider', 'value')],
+        Output('graph', 'figure'),
+        [Input('slider', 'value')],
     )
     def update_figure(index):
         traces = []
 
+        for i in range(len(app_data.points) - 1):
+            a = app_data.points[i]
+            b = app_data.points[i + 1]
+            segment = [a["x"], a["y"], b["x"], b["y"]]
+            traces.append(trace_line(segment, name=None, color="#BBBBBB"))
+
         point = app_data.points[index]
 
-        traces.append(trace_markers([point["x"]], [point["y"]], "#000000", "point", size=7))
+        traces.append(trace_markers([point["x"]], [point["y"]], "#00FF00", "point", size=10))
 
         bb = app_data.bb
         offset_x = (bb[1] - bb[0]) * 0.03
@@ -181,29 +172,15 @@ def init_app():
         return {
             'data': traces,
             'layout': dict(
+                title="Contour ID: {}".format(point["contour_id"]),
                 xaxis={'title': 'x', 'range': [bb[0] - offset_x, bb[1] + offset_x]},
                 yaxis={'title': 'y', 'range': [bb[2] - offset_y, bb[3] + offset_y]},
                 margin={'l': 100, 'b': 50, 't': 50, 'r': 300},
                 hovermode='closest',
                 legend={'x': 1.1, 'y': 0.5},
-                # transition={'duration': 500},
             )
         }
 
-    """
-    @app.callback(
-        Output('textarea', 'value'),
-        [Input('iteration-slider', 'value')],
-    )
-    def update_text(index):
-        iteration = app_data.iterations_data[index]
-        text = "\n".join([
-            str(line)
-            for line in iteration.lines
-        ])
-        return text
-    """
-    
     return app
 
 
