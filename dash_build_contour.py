@@ -41,7 +41,68 @@ jumping to pos 1
 Coordinate { x: -15.0, y: -15.0 }
 """
 
-data = data_two_triangles
+data_cross = """
+Coordinate { x: 0.0, y: 100.0 } contour_id: 0
+Coordinate { x: 37.5, y: 112.5 } contour_id: 0
+Coordinate { x: 37.5, y: 187.5 } contour_id: 0
+Coordinate { x: 0.0, y: 200.0 } contour_id: 0
+Coordinate { x: 0.0, y: 100.0 } contour_id: 0
+Coordinate { x: 37.5, y: 37.5 } contour_id: 1
+Coordinate { x: 150.0, y: 150.0 } contour_id: 1
+Coordinate { x: 37.5, y: 112.5 } contour_id: 1
+Coordinate { x: 37.5, y: 37.5 } contour_id: 1
+Coordinate { x: 37.5, y: 187.5 } contour_id: 2
+Coordinate { x: 150.0, y: 150.0 } contour_id: 2
+Coordinate { x: 37.5, y: 262.5 } contour_id: 2
+Coordinate { x: 37.5, y: 187.5 } contour_id: 2
+Coordinate { x: 100.0, y: 0.0 } contour_id: 3
+Coordinate { x: 187.5, y: 0.0 } contour_id: 3
+Coordinate { x: 187.5, y: 37.5 } contour_id: 3
+Coordinate { x: 150.0, y: 150.0 } contour_id: 3
+Coordinate { x: 100.0, y: 0.0 } contour_id: 3
+Coordinate { x: 100.0, y: 300.0 } contour_id: 4
+Coordinate { x: 150.0, y: 150.0 } contour_id: 4
+Coordinate { x: 187.5, y: 262.5 } contour_id: 4
+Coordinate { x: 187.5, y: 300.0 } contour_id: 4
+Coordinate { x: 100.0, y: 300.0 } contour_id: 4
+Coordinate { x: 150.0, y: 150.0 } contour_id: 5
+Coordinate { x: 187.5, y: 112.5 } contour_id: 5
+Coordinate { x: 187.5, y: 137.5 } contour_id: 5
+Coordinate { x: 150.0, y: 150.0 } contour_id: 5
+Coordinate { x: 187.5, y: 187.5 } contour_id: 5
+Coordinate { x: 187.5, y: 262.5 } contour_id: 5
+Coordinate { x: 200.0, y: 300.0 } contour_id: 5
+Coordinate { x: 225.0, y: 300.0 } contour_id: 5
+Coordinate { x: 225.0, y: 225.0 } contour_id: 5
+Coordinate { x: 262.5, y: 262.5 } contour_id: 5
+Coordinate { x: 262.5, y: 187.5 } contour_id: 5
+Coordinate { x: 300.0, y: 200.0 } contour_id: 5
+Coordinate { x: 300.0, y: 100.0 } contour_id: 5
+Coordinate { x: 262.5, y: 112.5 } contour_id: 5
+Coordinate { x: 262.5, y: 37.5 } contour_id: 5
+Coordinate { x: 225.0, y: 75.0 } contour_id: 5
+Coordinate { x: 225.0, y: 0.0 } contour_id: 5
+Coordinate { x: 200.0, y: 0.0 } contour_id: 5
+Coordinate { x: 187.5, y: 37.5 } contour_id: 5
+Coordinate { x: 187.5, y: 112.5 } contour_id: 5
+Coordinate { x: 225.0, y: 75.0 } contour_id: 5
+Coordinate { x: 225.0, y: 125.0 } contour_id: 5
+Coordinate { x: 187.5, y: 137.5 } contour_id: 5
+Coordinate { x: 187.5, y: 162.5 } contour_id: 5
+Coordinate { x: 150.0, y: 150.0 } contour_id: 5
+Coordinate { x: 187.5, y: 162.5 } contour_id: 6
+Coordinate { x: 225.0, y: 175.0 } contour_id: 6
+Coordinate { x: 225.0, y: 225.0 } contour_id: 6
+Coordinate { x: 187.5, y: 187.5 } contour_id: 6
+Coordinate { x: 187.5, y: 162.5 } contour_id: 6
+Coordinate { x: 225.0, y: 125.0 } contour_id: 7
+Coordinate { x: 262.5, y: 112.5 } contour_id: 7
+Coordinate { x: 262.5, y: 187.5 } contour_id: 7
+Coordinate { x: 225.0, y: 175.0 } contour_id: 7
+Coordinate { x: 225.0, y: 125.0 } contour_id: 7
+"""
+
+data = data_cross
 
 
 def prepare_data():
@@ -159,8 +220,9 @@ def init_app():
         for i in range(len(app_data.points) - 1):
             a = app_data.points[i]
             b = app_data.points[i + 1]
-            segment = [a["x"], a["y"], b["x"], b["y"]]
-            traces.append(trace_line(segment, name=None, color="#BBBBBB"))
+            if a["contour_id"] == b["contour_id"]:
+                segment = [a["x"], a["y"], b["x"], b["y"]]
+                traces.append(trace_line(segment, name=None, color="#BBBBBB"))
 
         point = app_data.points[index]
 
