@@ -8,6 +8,15 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
+"""
+Requires placing debug prints in connect edges:
+
+println!("{:?} contour_id: {}", initial, contour_id);
+
+println!("{:?} contour_id: {}", result_events[pos as usize].point, contour_id);
+"""
+
+
 data_two_triangles = """
 Coordinate { x: -15.0, y: -15.0 }
 jumping to pos 16

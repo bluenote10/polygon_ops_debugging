@@ -59,6 +59,8 @@ class Modes(object):
     self_overlaps1 = "self_overlaps1"
     rust_issue12 = "rust_issue12"
     many_vertical1 = "many_vertical1"
+    xor_holes1 = "xor_holes1"
+    xor_holes2 = "xor_holes2"
 
 
 def parse_args():
@@ -71,11 +73,6 @@ def parse_args():
     parser.add_argument(
         "-o", "--output",
         help="Output JSON file"
-    )
-    parser.add_argument(
-        "--operation",
-        help="Which output operation to request in the test case.",
-        default="union",
     )
     args = parser.parse_args()
     return args
@@ -374,18 +371,49 @@ def gen_many_vertical1():
             for y0, y1 in ys
         ]
         return polys
-        """
-        for y0, y1 in ys:
-        close_ring([
-            [10, +10],
-            [15, +10],
-            [15, +20],
-        ])
-        """
-        #import IPython; IPython.embed()
 
     polys_a = generate(-1.0, +0.5, seed=0)
     polys_b = generate(+1.0, -0.5, seed=1)
+    return polys_a, polys_b
+
+
+def gen_xor_holes1():
+    polys_a = [
+        [close_ring([
+            [-8, -1],
+            [-5, +0.5],
+            [-2, -1],
+        ])],
+        [close_ring([
+            [+8, -1],
+            [+5, +0.5],
+            [+2, -1],
+        ])],
+    ]
+    polys_b = [
+        [close_ring([
+            [-7, +1],
+            [-4, -0.5],
+            [-1, +1],
+        ])],
+        [close_ring([
+            [+7, +1],
+            [+4, -0.5],
+            [+1, +1],
+        ])],
+    ]
+    return polys_a, polys_b
+
+
+def gen_xor_holes2():
+    polys_a = [
+        [gen_poly(-3, -1, -1, +0.5)],
+        [gen_poly(+3, -1, +1, +0.5)],
+    ]
+    polys_b = [
+        [gen_poly(-4, +1, -2, -0.5)],
+        [gen_poly(+4, +1, +2, -0.5)],
+    ]
     return polys_a, polys_b
 
 
@@ -398,6 +426,7 @@ def main():
 
     type_a = "MultiPolygon"
     type_b = "MultiPolygon"
+    operation = "union"
 
     if args.mode == Modes.checkerboard1:
         polys_a = []
@@ -482,6 +511,14 @@ def main():
     elif args.mode == Modes.many_vertical1:
         polys_a, polys_b = gen_many_vertical1()
 
+    elif args.mode == Modes.xor_holes1:
+        polys_a, polys_b = gen_xor_holes1()
+        operation = "xor"
+
+    elif args.mode == Modes.xor_holes2:
+        polys_a, polys_b = gen_xor_holes2()
+        operation = "xor"
+
     else:
         raise ValueError("Invalid mode: {}".format(args.mode))
 
@@ -489,7 +526,7 @@ def main():
     print("B:\n{}".format(polys_b))
 
     json_output = TEMPLATE.replace("{", "{{").replace("}", "}}").replace("PLACEHOLDER", "{}").format(
-        polys_a, type_a, polys_b, type_b, args.operation,
+        polys_a, type_a, polys_b, type_b, operation,
     )
 
     print(json_output)
