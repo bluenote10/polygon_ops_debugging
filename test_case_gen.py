@@ -4,6 +4,7 @@ from __future__ import print_function, division
 
 import argparse
 import json
+import os
 
 import numpy as np
 
@@ -61,6 +62,7 @@ class Modes(object):
     many_vertical1 = "many_vertical1"
     xor_holes1 = "xor_holes1"
     xor_holes2 = "xor_holes2"
+    worldmap = "worldmap"
 
 
 def parse_args():
@@ -417,6 +419,26 @@ def gen_xor_holes2():
     return polys_a, polys_b
 
 
+def gen_extract_from_martinez_source(martinez_source, file):
+    with open(os.path.join(martinez_source, file)) as f:
+        lines = f.readlines()
+    num_polys = int(lines[0])
+    i = 1
+    rings = []
+    for _ in range(num_polys):
+        num_points = int(lines[i].split()[0])
+        i += 1
+        points = []
+        for _ in range(num_points):
+            row = lines[i].split()
+            x = float(row[0])
+            y = float(row[1])
+            points.append([x, y])
+            i += 1
+        rings.append(close_ring(points))
+    return [rings]
+
+
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
@@ -519,17 +541,24 @@ def main():
         polys_a, polys_b = gen_xor_holes2()
         operation = "xor"
 
+    elif args.mode == Modes.worldmap:
+        martinez_src = os.path.join(
+            os.path.dirname(__file__),
+            "../../martinez-src/polygons/worldmap",
+        )
+        polys_a = gen_extract_from_martinez_source(martinez_src, "worldmap")
+        polys_b = gen_extract_from_martinez_source(martinez_src, "15948_squares")
+
     else:
         raise ValueError("Invalid mode: {}".format(args.mode))
 
-    print("A:\n{}".format(polys_a))
-    print("B:\n{}".format(polys_b))
+    # print("A:\n{}".format(polys_a))
+    # print("B:\n{}".format(polys_b))
 
     json_output = TEMPLATE.replace("{", "{{").replace("}", "}}").replace("PLACEHOLDER", "{}").format(
         polys_a, type_a, polys_b, type_b, operation,
     )
-
-    print(json_output)
+    # print(json_output)
 
     if args.output is not None:
         with open(args.output, "w") as f:
