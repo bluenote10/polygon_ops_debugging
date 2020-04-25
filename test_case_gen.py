@@ -62,6 +62,8 @@ class Modes(object):
     many_vertical1 = "many_vertical1"
     xor_holes1 = "xor_holes1"
     xor_holes2 = "xor_holes2"
+    intersections_at_endpoints = "intersections_at_endpoints"
+
     worldmap = "worldmap"
 
 
@@ -419,6 +421,25 @@ def gen_xor_holes2():
     return polys_a, polys_b
 
 
+def gen_intersections_at_endpoints(r_i, r_o, corner_cutoff):
+    c = corner_cutoff
+    ring = close_ring([
+        [-r_o + c, +r_o],
+        [+r_o - c, +r_o],
+        [+r_i, +r_i],
+        [+r_o, +r_o - c],
+        [+r_o, -r_o + c],
+        [+r_i, -r_i],
+        [+r_o - c, -r_o],
+        [-r_o + c, -r_o],
+        [-r_i, -r_i],
+        [-r_o, -r_o + c],
+        [-r_o, +r_o - c],
+        [-r_i, +r_i],
+    ])
+    return [[ring]]
+
+
 def gen_extract_from_martinez_source(martinez_source, file):
     with open(os.path.join(martinez_source, file)) as f:
         lines = f.readlines()
@@ -540,6 +561,14 @@ def main():
     elif args.mode == Modes.xor_holes2:
         polys_a, polys_b = gen_xor_holes2()
         operation = "xor"
+
+    elif args.mode == Modes.intersections_at_endpoints:
+        polys_a = gen_intersections_at_endpoints(0.1, 10, 1.)
+        polys_b = gen_intersections_at_endpoints(0.1, 10, 1.00001)
+        # This leads to a crash: investigate later?
+        # polys_a = gen_intersections_at_endpoints(0.1, 10, 1)
+        # polys_b = gen_intersections_at_endpoints(0.1, 20, 1)
+        operation = "union"
 
     elif args.mode == Modes.worldmap:
         martinez_src = os.path.join(
